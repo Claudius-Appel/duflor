@@ -51,14 +51,15 @@ check_javaVM_setup <- function() {
 #' @importFrom imager load.image
 #'
 #' @example man/examples/load_image.R
+#'
 load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_left=0, crop_right=0, crop_top=0, crop_bottom=0) {
-#' TODO IMPORTANT:
-#'
-#' GB <- 8
-#' options(java.parameters = paste0("-Xmx", GB, "g")) ## this works.
-#' library(duflor) # remember to set up the java heap-size prior to loading duflor. This is _important_.
-#'
-#' THESE LINES MUST BE DOCUMENTED TO BE EXECUTED PRIOR TO CALLING `library(duflor)`. OTHERWHISE `RBioFormats::read.image()` will most most most likely fail
+# TODO IMPORTANT:
+#
+# GB <- 8
+# options(java.parameters = paste0("-Xmx", GB, "g")) ## this works.
+# library(duflor) # remember to set up the java heap-size prior to loading duflor. This is _important_.
+#
+# THESE LINES MUST BE DOCUMENTED TO BE EXECUTED PRIOR TO CALLING `library(duflor)`. OTHERWHISE `RBioFormats::read.image()` will most most most likely fail
     ## if we subset, we use RBioFormats. Thus, we first have to mount a java-VM
     ## (or confirm one was mounted already)
     chk <- check_javaVM_setup()
