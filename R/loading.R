@@ -120,7 +120,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
                                     proprietary.metadata = F,
                                     normalize = T,
                                     read.metadata = F,
-                                    subset = list(x=x1:x2,y1:y2)
+                                    subset = list(x=x1:x2, y=y1:y2)
                                 )
                             )
                         )
@@ -136,7 +136,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
                                 proprietary.metadata = F,
                                 normalize = T,
                                 read.metadata = F,
-                                subset = list(x=x1:x2,y1:y2)
+                                subset = list(x=x1:x2, y=y1:y2)
                             )
                         )
                     )
