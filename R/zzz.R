@@ -39,5 +39,18 @@
     # options(java.parameters = getOption("dfl.java_parameters"))
     # options(dfl.java_parameters = NULL)
 }
+#' Title
+#'
+#' @param libname .
+#' @param pkgname .
+#' @importFrom utils packageDescription
+#' @return .
+#' @keywords internal
+#' @noRd
+#'
+.onAttach <- function(libname,pkgname) {
+    packageStartupMessage("Attaching ",pkgname," version ",
+                          packageDescription("duflor")$Version, " from library ",libname,".")
+    packageStartupMessage("Currently-set <java_parameters>: '",getOption("java.parameters"),"'")
 }
 
