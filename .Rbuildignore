@@ -1,3 +1,6 @@
+^renv$
+^renv\.lock$
 ^duflor\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+.Rprofile

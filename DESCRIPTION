@@ -1,6 +1,6 @@
 Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Author: Claudius Appel
 Description: Determine 2-dimensional plant area via known area of an identifier
  dot.
@@ -13,3 +13,4 @@ RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Imports: imager, RBioFormats, stringr
