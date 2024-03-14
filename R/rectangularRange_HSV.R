@@ -24,12 +24,12 @@ rectangularRange_HSV <- function(pixel.array, upper_bound, lower_bound) {
     # pixel.array[X,Y,1,[H]]
     # pixel.array[X,Y,1,[S]]
     # pixel.array[X,Y,1,[V]]
-    j <- (lower_bound[1] <= pixel.array[, , 1, 1] & pixel.array[, , 1, 1] <= upper_bound[1])
-    k <- (lower_bound[2] <= pixel.array[, , 1, 2] & pixel.array[, , 1, 2] <= upper_bound[2])
-    # l <- (lower_bound[3] <= pixel.array[, , 1, 3] & pixel.array[, , 1, 3] <= upper_bound[3])
-    idx <- which(j & k # & l    #BUG: Why does subsetting here not work? Why are the values out of range???
-                 ,
-                 arr.ind = TRUE
+    # j <- (lower_bound[1] <= pixel.array[, , 1, 1] & pixel.array[, , 1, 1] <= upper_bound[1])
+    # k <- (lower_bound[2] <= pixel.array[, , 1, 2] & pixel.array[, , 1, 2] <= upper_bound[2])
+    idx <- which((lower_bound[1] <= pixel.array[, , 1, 1] & pixel.array[, , 1, 1] <= upper_bound[1])
+                 & (lower_bound[2] <= pixel.array[, , 1, 2] & pixel.array[, , 1, 2] <= upper_bound[2])
+                 # & (lower_bound[3] <= pixel.array[, , 1, 3] & pixel.array[, , 1, 3] <= upper_bound[3])
+                 ,arr.ind = TRUE
     )
     if (length(idx) == 0) { # no pixels match the requirements.
         return(list(
