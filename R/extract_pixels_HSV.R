@@ -24,7 +24,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.col
         if (length(lower_bound) != length(upper_bound)) {
             stop(
                 simpleError(
-                    str_c("Parameters 'lower_bound' and 'upper_bound' must contain the same number of color-declarations.")
+                    str_c("Parameters 'lower_bound' and 'upper_bound' must contain the same number of color-declarations/spectrums.")
                 )
             )
         }
@@ -33,9 +33,9 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.col
             stop(
                 simpleError(
                     str_c(
-                        "Parameters 'lower_bound' and 'upper_bound' do not declare the same parameters.",
+                        "Parameters 'lower_bound' and 'upper_bound' do not declare the same spectrums.",
                         " ",
-                        "The following parameters are unique to either one of them:\n",
+                        "The following spectrums are unique to either one of them:\n",
                         str_flatten_comma(inconsistent_list_params)
                     )
                 )
@@ -46,9 +46,9 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.col
             stop(
                 simpleError(
                     str_c(
-                        "Parameters 'lower_bound' and 'target.color' do not declare the same parameters.",
+                        "Parameters 'lower_bound' and 'target.color' do not declare the same spectrums.",
                         " ",
-                        "The following parameters are unique to either one of them:\n",
+                        "The following spectrums are unique to either one of them:\n",
                         str_flatten_comma(inconsistent_list_params)
                     )
                 )
