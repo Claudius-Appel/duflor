@@ -82,17 +82,90 @@ get_unique_list_elements <- function(a,b) {
 }
 
 
+#' add 4D-adjacency-grouping to `pixel.idx`-object
+#'
+#' The function assigns clusters to all coordinate-pairs in `pixel.idx`.
+#' A cluster contains all pixels which share a non-diagonal link with each other.
+#'
+#' This means that points `(1/1)`, `(1/2)` and `(2/2)` are assigned the same cluster,
+#' whereas points  `(5/5)` and `(6/6)` are assigned separate clusters.
+#'
+#' To consider diagonal matches as well, see [diagonal_adjacency()]
+#'
+#' Reference: <https://stackoverflow.com/a/37946855>
+#' @param pixel.idx pixel.idx-object
+#'
+#' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
+#' @export
+#' @importFrom stats cutree
+#' @importFrom stats dist
+#' @importFrom stats hclust
+#'
+adjacency <- function(pixel.idx) {
+    #TODO: rename functions to clarify naming conventions
+    cbind(pixel.idx, clus = cutree(hclust(dist(x = pixel.idx, method = "manhattan"), "single"), h = 1))
+}
 
+#' add 8D-adjacency-grouping to `pixel.idx`-object
+#'
+#' The function assigns clusters to all coordinate-pairs in `pixel.idx`.
+#' A cluster contains all pixels which share a diagonal link with each other.
+#'
+#' This means that points `(1/1)`, `(1/2)` and `(2/2)` are assigned the same cluster.
+#' Additionally, points  `(5/5)` and `(6/6)` are assigned the same cluster.
+#'
+#' To consider diagonal matches as well, see [adjacency()]
+#'
+#' Reference: <https://stackoverflow.com/a/37946855>
+#' @inheritParams .main_args
+#'
+#' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
+#' @export
+#' @importFrom stats cutree
+#' @importFrom stats dist
+#' @importFrom stats hclust
+#'
+diagonal_adjacency <- function(pixel.idx) {
+    cbind(pixel.idx, clus = cutree(hclust(dist(x = pixel.idx, method = "maximum"), "single"), h = 1))
+}
+#' return coordinates by cluster_id from `pixel.idx`
+#'
+#' @inheritParams .main_args
+#' @param cluster_id index of the to-be-retrieved cluster
+#'
+#' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' pixels <- extract_pixels_HSV(...) # extract pixels of a certain color-range
+#' adjacency <- adjacency(pixels$identifier$pixel.idx) # assign clusters
+#' coords <- retrieve_adjacency_coords(adjacency,1) # retrieve coordinates of first cluster
+#'
+#' plot_array_as_image_sRGB( # display result
+#'     HSVtoRGB(
+#'         change_pixel_color_HSV(
+#'             pixel.array,
+#'             coords,
+#'             target.color = "white",
+#'             mask_extreme = T
+#'             )
+#'         )
+#'     )
+#' }
+retrieve_adjacency_coords <- function(pixel.idx,cluster_id) {
+    pixel.idx[pixel.idx[,3]==cluster_id,]
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+#' wrapper around `object.size()`
+#'
+#' @param x object to retrive memory size of
+#'
+#' @return size of `x` in GB
+#' @keywords internal
+#'
+#' @examples duflor:::objs(1:1:500000)
+#' @importFrom utils object.size
+objs <- function(x) {
+    cat(as.numeric(object.size(x)*1e-9 + 0),"GB")
+}
