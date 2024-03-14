@@ -2,6 +2,9 @@ Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
 Version: 0.0.1.9005
 Author: Claudius Appel
+Authors@R: c(
+    person("Claudius", "Appel", , , role = c("aut", "cre"))
+  )
 Description: Determine 2-dimensional plant area via known area of an identifier
  dot.
 Maintainer: Gewerd Strauss <151634114+Claudius-Appel@users.noreply.github.com>
@@ -17,3 +20,5 @@ Suggests:
 Config/testthat/edition: 3
 Imports: imager, RBioFormats, stringr
 VignetteBuilder: knitr
+URL: https://github.com/Claudius-Appel/duflor/
+BugReports: https://github.com/Claudius-Appel/duflor/issues

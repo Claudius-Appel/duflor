@@ -5,24 +5,24 @@ reference:
       - '`prep_loading`'
   - title: Main Utility
     desc: central processing functions
+    contents:
       - '`load_image`'
       - '`extract_pixels_HSV`'
   - title: Conversion & Modification
     desc: Functions required to modify or convert objects
+    contents:
       - '`HSVtoRGB`'
       - '`RGBtoHSV`'
       - '`sRGBtoRGB`'
       - '`change_pixel_color_HSV`'
       - '`norm_to_range_01`'
-  -
       - '`adjacency`'
       - '`diagonal_adjacency`'
       - '`retrieve_adjacency_coords`'
-
       - '`rectangularRange_HSV`'
       - '`pixels_to_area`'
       - '`plot_array_as_image_sRGB`'
-  - title: Internals
+  - title: Internals/Helpers
     desc: Internal functions and helpers
     contents:
       - '`apply_hsv_color_to_image_subset`'

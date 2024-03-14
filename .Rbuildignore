@@ -6,3 +6,4 @@
 .Rprofile
 ^dev$
 ^README\.Rmd$
+^docs$
