@@ -1,6 +1,6 @@
 Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
-Version: 0.0.1.9002
+Version: 0.0.1.9003
 Author: Claudius Appel
 Description: Determine 2-dimensional plant area via known area of an identifier
  dot.
