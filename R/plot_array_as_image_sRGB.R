@@ -13,7 +13,7 @@
 #' @examples
 #' \dontrun{
 #' plot_array_as_image_sRGB(
-#'     imager::HSVtoRGB(
+#'     HSVtoRGB(
 #'         imager::load.example("parrots")
 #'         ),
 #'     main = str_c("parrots-example")
