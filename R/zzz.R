@@ -45,12 +45,17 @@
     , bex_upper_bound_identifier_dot = c(359, 1, 1)
     )
     options(duflor.default_hsv_spectrums = spectrums)
+
+    #### Configure default identifier-area ####
+    options(duflor.default_identifier_area = 0.503) # cm^2
 }
 .onUnLoad <- function(lib, pkg) {
     # ## reset Java parameters
     # options(java.parameters = getOption("dfl.java_parameters"))
     # options(dfl.java_parameters = NULL)
+
     options(duflor.default_hsv_spectrums = NULL)
+    options(duflor.default_identifier_area = NULL)
 }
 #' Title
 #'
