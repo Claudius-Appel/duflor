@@ -42,11 +42,10 @@ check_javaVM_setup <- function() {
 #'
 #' @inheritParams .main_args
 #'
+#'
 #' @return hsv-formatted pixel.array, unless HSV==false.
 #' @export
 #' @importFrom stringr str_c
-#' @importFrom imager RGBtoHSV
-#' @importFrom imager sRGBtoRGB
 #' @importFrom imager as.cimg
 #' @importFrom imager load.image
 #'
@@ -113,7 +112,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
                 return(  # subsetting, HSV
                     RGBtoHSV(
                         sRGBtoRGB(
-                            as.cimg(
+                            imager::as.cimg(
                                 RBioFormats::read.image(
                                     file = image.path,
                                     filter.metadata = T,
@@ -129,7 +128,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
             } else {
                 return(  # subsetting, RGB
                     sRGBtoRGB(
-                        as.cimg(
+                        imager::as.cimg(
                             RBioFormats::read.image(
                                 file = image.path,
                                 filter.metadata = T,
