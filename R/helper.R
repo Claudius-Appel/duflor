@@ -157,15 +157,15 @@ retrieve_adjacency_coords <- function(pixel.idx,cluster_id) {
     pixel.idx[pixel.idx[,3]==cluster_id,]
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+#' wrapper around `object.size()`
+#'
+#' @param x object to retrive memory size of
+#'
+#' @return size of `x` in GB
+#' @keywords internal
+#'
+#' @examples duflor:::objs(1:1:500000)
+#' @importFrom utils object.size
+objs <- function(x) {
+    cat(as.numeric(object.size(x)*1e-9 + 0),"GB")
+}
