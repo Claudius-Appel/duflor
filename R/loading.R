@@ -49,8 +49,6 @@ check_javaVM_setup <- function() {
 #' @importFrom imager as.cimg
 #' @importFrom imager load.image
 #'
-#' @example man/examples/load_image.R
-#'
 load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_left=0, crop_right=0, crop_top=0, crop_bottom=0) {
 # TODO IMPORTANT:
 #
