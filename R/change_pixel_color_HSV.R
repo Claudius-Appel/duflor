@@ -1,4 +1,4 @@
-#' handles color-translation from character-name to hsv and returns results of `apply_hsv_color_to_image_subset`
+#' handles color-translation from character-name to hsv and returns results of `duflor::apply_hsv_color_to_image_subset()`
 #'
 #' @inheritParams .main_args
 #' @return `pixel.array` with hsv-values of pixels at positions `pixel.idx` modified.

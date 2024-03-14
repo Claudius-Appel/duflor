@@ -5,3 +5,7 @@
 ^LICENSE\.md$
 .Rprofile
 ^dev$
+^README\.Rmd$
+^docs$
+^_pkgdown\.yml$
+^pkgdown$
