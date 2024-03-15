@@ -8,20 +8,6 @@
 #'
 prep_loading <- function(gb = 8) {
 
-    # ram <- RBioFormats::checkJavaMemory("g")
-    # if (ram<4) {
-    #     warning(
-    #         simpleWarning(
-    #             str_c(
-    #                 "Insufficient Java memory heap size.",
-    #                 "\nPrior to loading this package and/or 'RBioFormats', you *must* increase the java-heapsize.",
-    #                 "\nYou can still use this package, but you cannot crop images with 'duflor::load_image()'."
-    #             )
-    #         )
-    #     )
-    # }
-    # requireNamespace( "RBioFormats" )
-    # print(getOption("java.parameters"))
     print(ret <- check_javaVM_setup())
     return(ret)
 }
