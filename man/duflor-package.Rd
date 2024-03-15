@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Claudius Appel
+\strong{Maintainer}: Claudius Appel \email{claudius.appel@freente.de}
 
 }
 \keyword{internal}

@@ -4,6 +4,8 @@
 # duflor
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of duflor is to …
@@ -22,6 +24,8 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(duflor)
+#> Attaching duflor version 0.0.1.9007 from library C:/Users/Claudius Main/AppData/Local/Temp/RtmpKi859b/temp_libpath3cac10f66a1c.
+#> Currently-set <java_parameters>: '-Xmx8g'
 ## basic example code
 ```
 
