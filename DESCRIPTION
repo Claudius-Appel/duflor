@@ -3,11 +3,11 @@ Title: Plant Image Analysis For Determination of Leaf- and Root-Area
 Version: 0.0.1.9007
 Author: Claudius Appel
 Authors@R: c(
-    person("Claudius", "Appel", , , role = c("aut", "cre"))
+    person("Claudius", "Appel", email =   "151634114+Claudius-Appel@users.noreply.github.com" , role = c("aut", "cre"))
   )
 Description: Determine 2-dimensional plant area via known area of an identifier
  dot.
-Maintainer: Gewerd Strauss <151634114+Claudius-Appel@users.noreply.github.com>
+Maintainer: Claudius Appel <151634114+Claudius-Appel@users.noreply.github.com>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
