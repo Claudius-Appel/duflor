@@ -12,7 +12,7 @@ reference:
     contents:
       - '`load_image`'
       - '`extract_pixels_HSV`'
-      - '`func_new`'
+      - '`func_old`'
   - title: Conversion & Modification
     desc: Functions required to modify or convert objects
     contents:
