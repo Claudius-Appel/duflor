@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Claudius Appel
+\strong{Maintainer}: Claudius Appel \email{151634114+Claudius-Appel@users.noreply.github.com}
 
 }
 \keyword{internal}
