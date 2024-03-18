@@ -30,8 +30,12 @@ load_image(
 \item{crop_bottom}{see crop_left}
 }
 \value{
-hsv-formatted pixel.array, unless HSV==false.
+hsv-formatted pixel.array, unless \code{HSV==false}.
 }
 \description{
 load image as HSV or RGB-array
+}
+\note{
+\code{load_image()} allows loading subsets of images using \code{RBioFormats::read.image()}, which in turn relies upon the package \code{rJava}.
+For the setup of \code{RBioFormats}, refer to \url{https://github.com/aoles/RBioFormats?tab=readme-ov-file#installation}.
 }

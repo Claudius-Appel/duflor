@@ -6,6 +6,8 @@
 \alias{duflor-package}
 \title{duflor: Plant Image Analysis For Determination of Leaf- and Root-Area}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Determine 2-dimensional plant area via known area of an identifier dot.
 }
 \seealso{

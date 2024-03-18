@@ -1,54 +1,100 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# duflor
+# duflor <a href="https://github.com/Claudius-Appel/duflor/"><img src="man/figures/logo.png" align="right" height="139" alt="duflor website" /></a>
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check:
+Master](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check:
+Dev](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of duflor is to …
+## Overview
+
+Duflor is a package to detect and quantify number of pixels in any
+subrange(s) of HSV-color space declared by an upper and lower bound.
+While the package is principally task-agnostic and could work on any
+sort of HSV-range(s), it is developed for the detection and
+quantification of plant area.
 
 ## Installation
 
-You can install the development version of duflor like so:
+You can install the development and release versions of `duflor` like
+so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# release
+devtools::install_github("https://github.com/Claudius-Appel/duflor@master")
+# development
+devtools::install_github("https://github.com/Claudius-Appel/duflor@dev")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+If help-vignettes are to be downloaded, use instead:
 
 ``` r
-library(duflor)
-#> Attaching duflor version 0.0.1.9007 from library C:/Users/Claudius Main/AppData/Local/Temp/RtmpKi859b/temp_libpath3cac10f66a1c.
-#> Currently-set <java_parameters>: '-Xmx8g'
-## basic example code
+devtools::install_github("https://github.com/Claudius-Appel/duflor@master"
+  ,build_vignettes = T)
+devtools::install_github("https://github.com/Claudius-Appel/duflor@dev"
+  ,build_vignettes = T)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Vignettes are rendered documents discussing specific topics within a
+package. Installing them is recommended, but not required for utilising
+the package itself.
+
+### Prerequisites
+
+Installing this package from GitHub requires the installation of the
+R-package `devtools`:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+install.packages("devtools")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+### Dependencies
 
-You can also embed plots, for example:
+The function \[load_all()\] can optionally load subsets of an image; for
+more information see its documentation. To allow this to work, the
+package [RBioFormats](https://github.com/aoles/RBioFormats) is required.
+Refer to its documentation for installing the package.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+## Usage
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+For detailed documentation, refer to
+<https://claudius-appel.github.io/duflor/>
+
+Additionally, various topics have more detailed articles, accessible on
+the aforementioned website, as well as within R via `browseVignettes()`.
+While access from within R is possible, it is generally recommended to
+view the articles via the website.
+
+### A small sidenote on options set by duflor:
+
+Upon loading, duflor will set the following options via `options(XX)`:
+
+- duflor.default_hsv_spectrums: default HSV-ranges for
+  - drought leaf-area
+  - green leaf-area
+  - complete leaf-area
+  - identifier area
+- duflor.default_identifier_area: the size of the `identifier_dot` in
+  \[cm^2\].
+
+Their values can be retrieved via `getOption(option)`.
+
+``` r
+getOption("duflor.default_hsv_spectrums")
+getOption("duflor.default_identifier_area")
+```
+
+`duflor.default_hsv_spectrums` is merely used as a shortcut to load the
+currently-set default hsv ranges. It is not intended to be modified; as
+it serves no internal use. `duflor.default_identifier_area` is more
+likely to require modification. Before calculating the area for each
+spectrum via `duflor::pixels_to_area(pixel.counts)`, the true area of
+the identifier-dot must be set via this option. The default is set to
+0.503. All areas are assumed to be in \[cm^2\].
+
+## Further
