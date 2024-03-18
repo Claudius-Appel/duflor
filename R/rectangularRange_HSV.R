@@ -12,6 +12,10 @@
 #' - `original.img` - fed-in pixel.array
 #' @export
 #'
+#' @note
+#' Adopted from [countcolors::rectangularRange], reworked to work in HSV color
+#' space instead of RGB and simplified.
+#'
 #' @examples
 #' \dontrun{
 #' rectangularRange_HSV(
@@ -46,4 +50,3 @@ rectangularRange_HSV <- function(pixel.array, upper_bound, lower_bound) {
     )
     return(return.list)
 }
-

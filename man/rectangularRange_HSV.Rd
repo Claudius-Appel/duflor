@@ -31,6 +31,10 @@ Takes HSV-formatted pixel.array and bounds.
 When determining which pixels lie within the bounds, only the \code{hue}- and \code{saturation}-
 values are respected. The \code{value}-component is not considered.
 }
+\note{
+Adopted from \link[countcolors:rectangularRange]{countcolors::rectangularRange}, reworked to work in HSV color
+space instead of RGB and simplified.
+}
 \examples{
 \dontrun{
 rectangularRange_HSV(
