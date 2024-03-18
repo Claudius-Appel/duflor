@@ -8,20 +8,6 @@
 #'
 prep_loading <- function(gb = 8) {
 
-    # ram <- RBioFormats::checkJavaMemory("g")
-    # if (ram<4) {
-    #     warning(
-    #         simpleWarning(
-    #             str_c(
-    #                 "Insufficient Java memory heap size.",
-    #                 "\nPrior to loading this package and/or 'RBioFormats', you *must* increase the java-heapsize.",
-    #                 "\nYou can still use this package, but you cannot crop images with 'duflor::load_image()'."
-    #             )
-    #         )
-    #     )
-    # }
-    # requireNamespace( "RBioFormats" )
-    # print(getOption("java.parameters"))
     print(ret <- check_javaVM_setup())
     return(ret)
 }
@@ -42,8 +28,11 @@ check_javaVM_setup <- function() {
 #'
 #' @inheritParams .main_args
 #'
+#' @note
+#' `load_image()` allows loading subsets of images using `RBioFormats::read.image()`, which in turn relies upon the package `rJava`.
+#' For the setup of `RBioFormats`, refer to <https://github.com/aoles/RBioFormats?tab=readme-ov-file#installation>.
 #'
-#' @return hsv-formatted pixel.array, unless HSV==false.
+#' @return hsv-formatted pixel.array, unless `HSV==false`.
 #' @export
 #' @importFrom stringr str_c
 #' @importFrom imager as.cimg
@@ -59,20 +48,32 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
 # THESE LINES MUST BE DOCUMENTED TO BE EXECUTED PRIOR TO CALLING `library(duflor)`. OTHERWHISE `RBioFormats::read.image()` will most most most likely fail
     ## if we subset, we use RBioFormats. Thus, we first have to mount a java-VM
     ## (or confirm one was mounted already)
-    chk <- check_javaVM_setup()
-    r_chk <- prep_loading(8)
     if (isTRUE(as.logical(subset_only))) {
-        if (chk) {
-            if (!r_chk) {
-                stop(
-                    simpleError(
-                        str_c(
-                            "The java-VM could not be mounted successfully.",
-                            "\nWithout the VM, images cannot be subset prior to analysis"
-                            )
+        if (getOption("duflor.java_available")) { ## assert that rJava is installed when attempting to load Image
+            chk <- check_javaVM_setup()
+            r_chk <- prep_loading(8)
+            if (chk) {
+                if (!r_chk) {
+                    stop(
+                        simpleError(
+                            str_c(
+                                "The java-VM could not be mounted successfully.",
+                                "\nWithout the VM, images cannot be subset prior to analysis"
+                                )
+                        )
                     )
-                )
+                }
             }
+            ## we confirmed that rJava is installed, but in truth we just need RBioFormats.
+            if (getOption("duflor.RBF_available")) { ## assert that RBF is installed when attempting to load Image
+                subset_only <- TRUE
+            } else {
+                subset_only <- FALSE
+            }
+        } else {
+            # rJava is not installed, thus we need to fallback to non-subsetting
+            # without rJava, we don't need to check for RBF.
+            subset_only <- FALSE
         }
     }
     if (file.exists(image.path)) {

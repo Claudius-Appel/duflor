@@ -1,13 +1,13 @@
 Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
-Version: 0.0.1.9007
+Version: 0.0.1.9008
 Author: Claudius Appel
 Authors@R: c(
-    person("Claudius", "Appel", email =   "151634114+Claudius-Appel@users.noreply.github.com" , role = c("aut", "cre"))
+    person("Claudius", "Appel", email =   "claudius.appel@freenet.de" , role = c("aut", "cre"))
   )
 Description: Determine 2-dimensional plant area via known area of an identifier
  dot.
-Maintainer: Claudius Appel <151634114+Claudius-Appel@users.noreply.github.com>
+Maintainer: Claudius Appel <claudius.appel@freenet.de>
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -16,9 +16,11 @@ RoxygenNote: 7.3.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    RBioFormats,
+    rJava
 Config/testthat/edition: 3
-Imports: imager, RBioFormats, stringr
+Imports: imager, stringr
 VignetteBuilder: knitr
 URL: https://github.com/Claudius-Appel/duflor/
 BugReports: https://github.com/Claudius-Appel/duflor/issues

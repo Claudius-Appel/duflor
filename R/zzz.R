@@ -48,6 +48,11 @@
 
     #### Configure default identifier-area ####
     options(duflor.default_identifier_area = 0.503) # cm^2
+
+
+    #### check RBioFormats availability ####
+    options(duflor.java_available = requireNamespace("rJava",quietly = T))
+    options(duflor.RBF_available = requireNamespace("RBioFormats",quietly = T))
 }
 .onUnLoad <- function(lib, pkg) {
     # ## reset Java parameters
@@ -56,6 +61,8 @@
 
     options(duflor.default_hsv_spectrums = NULL)
     options(duflor.default_identifier_area = NULL)
+    options(duflor.java_available = NULL)
+    options(duflor.RBF_available = NULL)
 }
 #' Title
 #'
@@ -69,6 +76,15 @@
 .onAttach <- function(libname,pkgname) {
     packageStartupMessage("Attaching ",pkgname," version ",
                           packageDescription("duflor")$Version, " from library ",libname,".")
-    packageStartupMessage("Currently-set <java_parameters>: '",getOption("java.parameters"),"'")
+    if (!requireNamespace("RBioFormats",quietly = T)) {
+        packageStartupMessage("The package RBioFormats is not available. Image subsetting during loading relies on RBioFormats. Image-Loading will default to reading the complete image.")
+    } else {
+        if (requireNamespace("rJava",quietly = T)) {
+            packageStartupMessage("Package 'RBioFormats' is available. Image subsetting during loading is possible. Setting <java_parameters>: '",getOption("java.parameters"),"'")
+        } else {
+            packageStartupMessage("Package 'RBioFormats' is available, but its dependency 'rJava' is not. Image subsetting relies on RBioFormats. Image-Loading will default to reading the complete image.")
+
+        }
+    }
 }
 
