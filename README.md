@@ -65,7 +65,12 @@ Refer to its documentation for installing the package.
 For detailed documentation, refer to
 <https://claudius-appel.github.io/duflor/>
 
-### Vignettes
+Additionally, various topics have more detailed articles, accessible on
+the aforementioned website, as well as within R via `browseVignettes()`.
+While access from within R is possible, it is generally recommended to
+view the articles via the website.
+
+### A small sidenote on options set by duflor:
 
 Upon loading, duflor will set the following options via `options(XX)`:
 

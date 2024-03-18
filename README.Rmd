@@ -64,8 +64,9 @@ To allow this to work, the package [RBioFormats](https://github.com/aoles/RBioFo
 
 For detailed documentation, refer to https://claudius-appel.github.io/duflor/
 
+Additionally, various topics have more detailed articles, accessible on the aforementioned website, as well as within R via `browseVignettes()`. While access from within R is possible, it is generally recommended to view the articles via the website.
 
-### Vignettes
+### A small sidenote on options set by duflor:
 
 
 Upon loading, duflor will set the following options via `options(XX)`: 
