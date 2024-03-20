@@ -6,6 +6,7 @@
 \usage{
 .main_args(
   pixel.array = NA,
+  indicator.array = NA,
   pixel.idx = NA,
   target.color = NA,
   target.color.hsv = NA,
@@ -13,6 +14,7 @@
   plot_indicator = NA,
   get_indicator = NA,
   mask_extreme = NA,
+  fast_eval = NA,
   return_hsv = NA,
   subset_only = NA,
   upper_bound = NA,
@@ -25,6 +27,8 @@
 }
 \arguments{
 \item{pixel.array}{image array as loaded via duflor::load_image()}
+
+\item{indicator.array}{\code{pixel.array} as returned}
 
 \item{pixel.idx}{list declaring pixels to which target.color.hsv is applied}
 
@@ -42,6 +46,8 @@
 are applied to the pixels. Set this argument to \code{TRUE} to also apply \code{value}.
 This will increase the contrast of the image drastically, but might result in
 less favorable images.)}
+
+\item{fast_eval}{Use \verb{C++}-code where possible to reduce execution time?}
 
 \item{return_hsv}{TRUE by default. Controls whether or not function returns pixel-data in \code{HSV}-colorspace or in \code{RGB}}
 

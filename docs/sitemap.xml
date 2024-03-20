@@ -31,6 +31,9 @@
     <loc>https://github.com/Claudius-Appel/duflor/reference/change_pixel_color_HSV.html</loc>
   </url>
   <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/check_javaVM_setup.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/diagonal_adjacency.html</loc>
   </url>
   <url>
@@ -68,6 +71,9 @@
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/plot_array_as_image_sRGB.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/plot_indicator_image.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/prep_loading.html</loc>

@@ -2,19 +2,9 @@
 % Please edit documentation in R/extract_pixels_HSV.R
 \name{extract_pixels_HSV}
 \alias{extract_pixels_HSV}
-\title{Title}
+\title{Extract pixels from image which fall inbetween lower- and upper bounds.}
 \usage{
-extract_pixels_HSV(
-  pixel.array,
-  lower_bound,
-  upper_bound,
-  target.color = "hotpink",
-  get_indicator = FALSE,
-  plot_indicator = FALSE,
-  mask_extreme = FALSE,
-  return_hsv = TRUE,
-  fast_eval = FALSE
-)
+extract_pixels_HSV(pixel.array, lower_bound, upper_bound, fast_eval = FALSE)
 }
 \arguments{
 \item{pixel.array}{image array as loaded via duflor::load_image()}
@@ -27,18 +17,7 @@ extract_pixels_HSV(
 \item single vector of length 3 declaring a set of HSV-values
 }}
 
-\item{target.color}{color in rgb-format \code{0-255}, or a member of  \code{colors()}}
-
-\item{get_indicator}{control whether or not target pixels should get colored in the indicator-images}
-
-\item{plot_indicator}{control whether or not the indicator image should be plotted}
-
-\item{mask_extreme}{by default, only the \code{hue}- and \code{saturation}-components
-are applied to the pixels. Set this argument to \code{TRUE} to also apply \code{value}.
-This will increase the contrast of the image drastically, but might result in
-less favorable images.)}
-
-\item{return_hsv}{TRUE by default. Controls whether or not function returns pixel-data in \code{HSV}-colorspace or in \code{RGB}}
+\item{fast_eval}{Use \verb{C++}-code where possible to reduce execution time?}
 }
 \value{
 EITHER:
@@ -58,5 +37,5 @@ list-object with the following elements (when supplying one one pair of bounds)
 }
 }
 \description{
-Title
+Extract pixels from image which fall inbetween lower- and upper bounds.
 }

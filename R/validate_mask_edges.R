@@ -25,7 +25,7 @@
 #'                                   )
 #'
 #' # get pixels which belong to a given mask, and return the results for it
-#' ret <- duflor::extract_pixels_HSV(pixel.array, lower_bound, upper_bound, ...)
+#' ret <- extract_pixels_HSV(pixel.array, lower_bound, upper_bound, F)
 #'
 #' # check for each mask if its edges are valid.
 #' for (mask in names(ret)) {

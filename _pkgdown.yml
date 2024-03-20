@@ -7,32 +7,40 @@ reference:
     desc: initial setup
     contents:
       - '`prep_loading`'
-  - title: Main Utility
+  - title: Main Utility - central processing
     desc: central processing functions
     contents:
       - '`load_image`'
       - '`extract_pixels_HSV`'
+      - '`rectangularRange_HSV`'
+      - '`rectangularRange_HSV_cpp`'
   - title: Conversion & Modification
-    desc: Functions required to modify or convert objects
+    desc: modification or conversion of objects
     contents:
-      - '`HSVtoRGB`'
+      - '`change_pixel_color_HSV`'
       - '`RGBtoHSV`'
       - '`sRGBtoRGB`'
-      - '`change_pixel_color_HSV`'
-      - '`norm_to_range_01`'
+      - '`HSVtoRGB`'
+  - title: Evaluation
+    desc: analysing results
+    contents:
       - '`adjacency`'
       - '`diagonal_adjacency`'
       - '`retrieve_adjacency_coords`'
-      - '`rectangularRange_HSV`'
-      - '`rectangularRange_HSV_cpp`'
       - '`pixels_to_area`'
+      - '`validate_mask_edges`'
+  - title: Display
+    desc: display image-arrays
+    contents:
+      - '`get_indicator_image`'
+      - '`plot_indicator_image`'
       - '`plot_array_as_image_sRGB`'
-  - title: Internals/Helpers
+  - title: Internals
     desc: Internal functions and helpers
     contents:
       - '`apply_hsv_color_to_image_subset`'
-      - '`get_indicator_image`'
+      - '`norm_to_range_01`'
+      - '`check_javaVM_setup`'
       - '`get_unique_list_elements`'
       - '`objs`'
-      - '`validate_mask_edges`'
       - '`.main_args`'

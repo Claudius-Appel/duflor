@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9013</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +53,7 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">.main_args</span><span class="op">(</span></span>
 <span>  pixel.array <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  indicator.array <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  pixel.idx <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  target.color <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  target.color.hsv <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -60,6 +61,7 @@
 <span>  plot_indicator <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  get_indicator <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  mask_extreme <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  fast_eval <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  return_hsv <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  subset_only <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  upper_bound <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -75,6 +77,10 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>pixel.array</dt>
 <dd><p>image array as loaded via duflor::load_image()</p></dd>
+
+
+<dt>indicator.array</dt>
+<dd><p><code>pixel.array</code> as returned</p></dd>
 
 
 <dt>pixel.idx</dt>
@@ -106,6 +112,10 @@
 are applied to the pixels. Set this argument to <code>TRUE</code> to also apply <code>value</code>.
 This will increase the contrast of the image drastically, but might result in
 less favorable images.)</p></dd>
+
+
+<dt>fast_eval</dt>
+<dd><p>Use <code>C++</code>-code where possible to reduce execution time?</p></dd>
 
 
 <dt>return_hsv</dt>

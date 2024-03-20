@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{rectangularRange_HSV_cpp}
 \alias{rectangularRange_HSV_cpp}
-\title{'C++'-implementation of \code{\link[=rectangularRange]{rectangularRange()}}}
+\title{'C++'-implementation of \code{\link[=rectangularRange_HSV]{rectangularRange_HSV()}}}
 \usage{
 rectangularRange_HSV_cpp(H, S, V, upper_bound, lower_bound, image_width)
 }
@@ -29,11 +29,12 @@ A list-object with the following elements (when supplying one one pair of bounds
 \item \code{pixel.idx} - pixel-locations of pixels detected between lower and upper bound.
 }
 
-Upon failure to find any matching pixels, an empty matrix of dimensions \verb{[0, 1:2]} is returned
+Upon failure to find any matching pixels, an empty matrix of dimensions \verb{[0, 1:2]} is returned.
 }
 \description{
-'C++'-implementation of \code{\link[=rectangularRange]{rectangularRange()}}
+'C++'-implementation of \code{\link[=rectangularRange_HSV]{rectangularRange_HSV()}}
 }
 \note{
-A block of notes
+The use of  \code{\link[=rectangularRange_HSV]{rectangularRange_HSV()}} is strongly discouraged in favour of this function,
+due to its drastically slower execution.
 }

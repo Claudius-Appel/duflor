@@ -13,9 +13,11 @@ using namespace Rcpp;
 
 
 
-//' @title 'C++'-implementation of [rectangularRange()]
+//' @title 'C++'-implementation of [rectangularRange_HSV()]
 //'
-//' @note A block of notes
+//' @note
+//' The use of  [rectangularRange_HSV()] is strongly discouraged in favour of this function,
+//' due to its drastically slower execution.
 //'
 //' @inheritParams .main_args
 //' @param H respective component of a `pixel.array`
@@ -25,7 +27,7 @@ using namespace Rcpp;
 //' @return A list-object with the following elements (when supplying one one pair of bounds)
 //' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
 //'
-//' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned
+//' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned.
 //' @export
 // [[Rcpp::export]]
 DataFrame rectangularRange_HSV_cpp(NumericVector H,

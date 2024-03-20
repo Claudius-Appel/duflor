@@ -5,7 +5,7 @@
 #' @param x vector to normalise to range `0-1`
 #'
 #' @return vector, normalised to range `0-1`
-#' @export
+#' @keywords internal
 #'
 norm_to_range_01 <- function(x){(x-min(x))/(max(x)-min(x))}
 
@@ -35,6 +35,7 @@ get_unique_list_elements <- function(a,b) {
 #' pseudo-function to define default parameter documentation
 #'
 #' @param pixel.array image array as loaded via duflor::load_image()
+#' @param indicator.array `pixel.array` as returned
 #' @param pixel.idx list declaring pixels to which target.color.hsv is applied
 #' @param target.color color in rgb-format `0-255`, or a member of  `colors()`
 #' @param target.color.hsv hsv-formatted color to apply
@@ -45,6 +46,7 @@ get_unique_list_elements <- function(a,b) {
 #' are applied to the pixels. Set this argument to `TRUE` to also apply `value`.
 #' This will increase the contrast of the image drastically, but might result in
 #' less favorable images.)
+#' @param fast_eval Use `C++`-code where possible to reduce execution time?
 #' @param return_hsv TRUE by default. Controls whether or not function returns pixel-data in `HSV`-colorspace or in `RGB`
 #' @param subset_only do you want to load only a subset range of values
 #' @param upper_bound EITHER:
@@ -59,6 +61,7 @@ get_unique_list_elements <- function(a,b) {
 #' @keywords internal
 #'
 .main_args <- function(pixel.array = NA,
+                       indicator.array = NA,
                        pixel.idx = NA,
                        target.color = NA,
                        target.color.hsv = NA,
@@ -66,6 +69,7 @@ get_unique_list_elements <- function(a,b) {
                        plot_indicator = NA,
                        get_indicator = NA,
                        mask_extreme = NA,
+                       fast_eval = NA,
                        return_hsv = NA,
                        subset_only = NA,
                        upper_bound = NA,
