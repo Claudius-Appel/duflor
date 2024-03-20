@@ -34,6 +34,7 @@ When determining which pixels lie within the bounds, only the \code{hue}- and \c
 values are respected. The \code{value}-component is not considered.
 }
 \note{
+The use of  \code{\link[=rectangularRange_HSV_cpp]{rectangularRange_HSV_cpp()}} is strongly suggested due to its drastically faster execution.
 Adopted from \link[countcolors:rectangularRange]{countcolors::rectangularRange}, reworked to work in HSV color
 space instead of RGB and simplified.
 }

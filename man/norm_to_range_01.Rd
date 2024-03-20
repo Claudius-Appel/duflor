@@ -15,3 +15,4 @@ vector, normalised to range \code{0-1}
 \description{
 normalise a vector to range \code{0-1}
 }
+\keyword{internal}

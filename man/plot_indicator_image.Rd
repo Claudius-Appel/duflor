@@ -22,20 +22,19 @@ This is a convenience- and clarity-wrapper around \code{\link[=plot_array_as_ima
 load a subset of an image
 lower_bound <- c(H,S,V)
 upper_bound <- c(H,S,V)
-pixel.array <- duflor::load_image(image.path,
-                                  subset_only = T,
-                                  crop_left = 0,
-                                  crop_right = 0,
-                                  crop_bottom = 0,
-                                  crop_top = 0
-                                  )
+pixel.array <- load_image(image.path,
+                          subset_only = T,
+                          crop_left = 0,
+                          crop_right = 0,
+                          crop_bottom = 0,
+                          crop_top = 0
+                          )
 # get pixels which belong to a given mask, and return the results for it
-ret <- duflor::extract_pixels_HSV(pixel.array = pixel.array,
-                                  lower_bound = lower_bound,
-                                  upper_bound = upper_bound,
-                                  ...,
-                                  fast_eval = TRUE
-                                  )
+ret <- extract_pixels_HSV(pixel.array = pixel.array,
+                          lower_bound = lower_bound,
+                          upper_bound = upper_bound,
+                          fast_eval = TRUE
+                          )
 # create indicator-image for 'green' spectrum
 type <- "green"
 indicator.array <- get_indicator_image(
