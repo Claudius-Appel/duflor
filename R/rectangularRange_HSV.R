@@ -5,11 +5,13 @@
 #' values are respected. The `value`-component is not considered.
 #' @inheritParams .main_args
 #'
-#' @return list-object with the following elements:
+#' @return upon success, returns a list-object with the following elements:
 #' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
 #' - `pixel.count` - number of pixels detected between lower and upper bound
 #' - `img.fraction` - fraction of image detected between lower and upper bound
 #' - `original.img` - fed-in pixel.array
+#'
+#' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned
 #' @export
 #'
 #' @note
@@ -36,17 +38,8 @@ rectangularRange_HSV <- function(pixel.array, upper_bound, lower_bound) {
                  ,arr.ind = TRUE
     )
     if (length(idx) == 0) { # no pixels match the requirements.
-        return(list(
-            pixel.idx = 0,
-            pixel.count = 0,
-            img.fraction = NA,
-            original.img = pixel.array
-        ))
+        return(idx)
+    } else {
+        return(idx)
     }
-    return.list <- list(
-        pixel.idx = idx,
-        pixel.count = nrow(idx),
-        img.fraction = nrow(idx) / (nrow(pixel.array) * ncol(pixel.array))
-    )
-    return(return.list)
 }

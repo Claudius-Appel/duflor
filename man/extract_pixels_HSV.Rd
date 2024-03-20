@@ -12,7 +12,8 @@ extract_pixels_HSV(
   get_indicator = FALSE,
   plot_indicator = FALSE,
   mask_extreme = FALSE,
-  return_hsv = TRUE
+  return_hsv = TRUE,
+  fast_eval = FALSE
 )
 }
 \arguments{
@@ -22,7 +23,7 @@ extract_pixels_HSV(
 
 \item{upper_bound}{EITHER:
 \itemize{
-\item list of upper HSV-bounds, e.g. list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))
+\item list of upper HSV-bounds, e.g. \code{list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))}
 \item single vector of length 3 declaring a set of HSV-values
 }}
 
