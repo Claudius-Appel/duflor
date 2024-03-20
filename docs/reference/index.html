@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9012</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
         </dt>
         <dd>Set java-parameters required for VM-setup.</dd>
       </dl></div><div class="section level2">
-      <h2 id="main-utility">Main Utility<a class="anchor" aria-label="anchor" href="#main-utility"></a></h2>
+      <h2 id="main-utility-central-processing">Main Utility - central processing<a class="anchor" aria-label="anchor" href="#main-utility-central-processing"></a></h2>
       
       <p class="section-desc"></p><p>central processing functions</p>
 
@@ -79,11 +79,21 @@
           
           <code><a href="extract_pixels_HSV.html">extract_pixels_HSV()</a></code> 
         </dt>
-        <dd>Title</dd>
+        <dd>Extract pixels from image which fall inbetween lower- and upper bounds.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="rectangularRange_HSV.html">rectangularRange_HSV()</a></code> 
+        </dt>
+        <dd>find pixels with color-values lying between upper_bound and lower_bound</dd>
+      </dl><dl><dt>
+          
+          <code><a href="rectangularRange_HSV_cpp.html">rectangularRange_HSV_cpp()</a></code> 
+        </dt>
+        <dd>'C++'-implementation of <code><a href="../reference/rectangularRange_HSV.html">rectangularRange_HSV()</a></code></dd>
       </dl></div><div class="section level2">
       <h2 id="conversion-modification">Conversion &amp; Modification<a class="anchor" aria-label="anchor" href="#conversion-modification"></a></h2>
       
-      <p class="section-desc"></p><p>Functions required to modify or convert objects</p>
+      <p class="section-desc"></p><p>modification or conversion of objects</p>
 
       
     </div><div id="" class="section level2">
@@ -93,9 +103,9 @@
 
       <dl><dt>
           
-          <code><a href="HSVtoRGB.html">HSVtoRGB()</a></code> 
+          <code><a href="change_pixel_color_HSV.html">change_pixel_color_HSV()</a></code> 
         </dt>
-        <dd>mirror of <code><a href="https://rdrr.io/pkg/imager/man/imager.colourspaces.html" class="external-link">imager::HSVtoRGB()</a></code></dd>
+        <dd>handles color-translation from character-name to hsv and returns results of <code><a href="../reference/apply_hsv_color_to_image_subset.html">duflor::apply_hsv_color_to_image_subset()</a></code></dd>
       </dl><dl><dt>
           
           <code><a href="RGBtoHSV.html">RGBtoHSV()</a></code> 
@@ -108,15 +118,21 @@
         <dd>mirror of <code><a href="https://rdrr.io/pkg/imager/man/imager.colourspaces.html" class="external-link">imager::sRGBtoRGB()</a></code></dd>
       </dl><dl><dt>
           
-          <code><a href="change_pixel_color_HSV.html">change_pixel_color_HSV()</a></code> 
+          <code><a href="HSVtoRGB.html">HSVtoRGB()</a></code> 
         </dt>
-        <dd>handles color-translation from character-name to hsv and returns results of <code><a href="../reference/apply_hsv_color_to_image_subset.html">duflor::apply_hsv_color_to_image_subset()</a></code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="norm_to_range_01.html">norm_to_range_01()</a></code> 
-        </dt>
-        <dd>normalise a vector to range <code>0-1</code></dd>
-      </dl><dl><dt>
+        <dd>mirror of <code><a href="https://rdrr.io/pkg/imager/man/imager.colourspaces.html" class="external-link">imager::HSVtoRGB()</a></code></dd>
+      </dl></div><div class="section level2">
+      <h2 id="evaluation">Evaluation<a class="anchor" aria-label="anchor" href="#evaluation"></a></h2>
+      
+      <p class="section-desc"></p><p>analysing results</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="adjacency.html">adjacency()</a></code> 
         </dt>
@@ -133,26 +149,42 @@
         <dd>return coordinates by cluster_id from <code>pixel.idx</code></dd>
       </dl><dl><dt>
           
-          <code><a href="rectangularRange_HSV.html">rectangularRange_HSV()</a></code> 
-        </dt>
-        <dd>find pixels with color-values lying between upper_bound and lower_bound</dd>
-      </dl><dl><dt>
-          
-          <code><a href="rectangularRange_HSV_cpp.html">rectangularRange_HSV_cpp()</a></code> 
-        </dt>
-        <dd>'C++'-implementation of <code>rectangularRange()</code></dd>
-      </dl><dl><dt>
-          
           <code><a href="pixels_to_area.html">pixels_to_area()</a></code> 
         </dt>
         <dd>convert pixel counts to an area based on the known area of an identifier-dot.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="validate_mask_edges.html">validate_mask_edges()</a></code> 
+        </dt>
+        <dd>Check for a given mask pixel.idx-object if its edges are clean</dd>
+      </dl></div><div class="section level2">
+      <h2 id="display">Display<a class="anchor" aria-label="anchor" href="#display"></a></h2>
+      
+      <p class="section-desc"></p><p>display image-arrays</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_indicator_image.html">get_indicator_image()</a></code> 
+        </dt>
+        <dd>wrapper around <code>change_pixel_color_HVS()</code> for the intention of clarity.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_indicator_image.html">plot_indicator_image()</a></code> 
+        </dt>
+        <dd>Plot indicator-image for a given spectrum</dd>
       </dl><dl><dt>
           
           <code><a href="plot_array_as_image_sRGB.html">plot_array_as_image_sRGB()</a></code> 
         </dt>
         <dd>plot an rgb-array via graphics-package</dd>
       </dl></div><div class="section level2">
-      <h2 id="internals-helpers">Internals/Helpers<a class="anchor" aria-label="anchor" href="#internals-helpers"></a></h2>
+      <h2 id="internals">Internals<a class="anchor" aria-label="anchor" href="#internals"></a></h2>
       
       <p class="section-desc"></p><p>Internal functions and helpers</p>
 
@@ -169,9 +201,14 @@
         <dd>apply hsv-color to index-located pixels in array</dd>
       </dl><dl><dt>
           
-          <code><a href="get_indicator_image.html">get_indicator_image()</a></code> 
+          <code><a href="norm_to_range_01.html">norm_to_range_01()</a></code> 
         </dt>
-        <dd>wrapper around <code>change_pixel_color_HVS()</code> for the intention of clarity.</dd>
+        <dd>normalise a vector to range <code>0-1</code></dd>
+      </dl><dl><dt>
+          
+          <code><a href="check_javaVM_setup.html">check_javaVM_setup()</a></code> 
+        </dt>
+        <dd>Determine whether or not the java-VM required for "RBioFormats" is set up</dd>
       </dl><dl><dt>
           
           <code><a href="get_unique_list_elements.html">get_unique_list_elements()</a></code> 
@@ -182,11 +219,6 @@
           <code><a href="objs.html">objs()</a></code> 
         </dt>
         <dd>wrapper around <code><a href="https://rdrr.io/r/utils/object.size.html" class="external-link">object.size()</a></code></dd>
-      </dl><dl><dt>
-          
-          <code><a href="validate_mask_edges.html">validate_mask_edges()</a></code> 
-        </dt>
-        <dd>Check for a given mask pixel.idx-object if its edges are clean</dd>
       </dl><dl><dt>
           
           <code><a href="dot-main_args.html">.main_args()</a></code> 
