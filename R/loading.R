@@ -13,7 +13,6 @@ prep_loading <- function(gb = 8) {
 }
 #' Determine whether or not the java-VM required for "RBioFormats" is set up
 #'
-#' @noRd
 #' @return boolean value whether or not the JAVA-VM is set up or not
 #' @keywords internal
 #'

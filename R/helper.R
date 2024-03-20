@@ -5,7 +5,7 @@
 #' @param x vector to normalise to range `0-1`
 #'
 #' @return vector, normalised to range `0-1`
-#' @export
+#' @keywords internal
 #'
 norm_to_range_01 <- function(x){(x-min(x))/(max(x)-min(x))}
 
@@ -35,6 +35,7 @@ get_unique_list_elements <- function(a,b) {
 #' pseudo-function to define default parameter documentation
 #'
 #' @param pixel.array image array as loaded via duflor::load_image()
+#' @param indicator.array `pixel.array` as returned
 #' @param pixel.idx list declaring pixels to which target.color.hsv is applied
 #' @param target.color color in rgb-format `0-255`, or a member of  `colors()`
 #' @param target.color.hsv hsv-formatted color to apply
@@ -45,20 +46,22 @@ get_unique_list_elements <- function(a,b) {
 #' are applied to the pixels. Set this argument to `TRUE` to also apply `value`.
 #' This will increase the contrast of the image drastically, but might result in
 #' less favorable images.)
+#' @param fast_eval Use `C++`-code where possible to reduce execution time?
 #' @param return_hsv TRUE by default. Controls whether or not function returns pixel-data in `HSV`-colorspace or in `RGB`
 #' @param subset_only do you want to load only a subset range of values
 #' @param upper_bound EITHER:
-#' - list of upper HSV-bounds, e.g. list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))
+#' - list of upper HSV-bounds, e.g. `list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))`
 #' - single vector of length 3 declaring a set of HSV-values
 #' @param lower_bound see `upper_bound`
 #' @param crop_left number of pixels to crop from the left edge of the image
-#' @param crop_right see crop_left
-#' @param crop_top see crop_left
-#' @param crop_bottom see crop_left
+#' @param crop_right see `crop_left`
+#' @param crop_top see `crop_left`
+#' @param crop_bottom see `crop_left`
 #' @return nothing. This function does *literally nothing at all*
 #' @keywords internal
 #'
 .main_args <- function(pixel.array = NA,
+                       indicator.array = NA,
                        pixel.idx = NA,
                        target.color = NA,
                        target.color.hsv = NA,
@@ -66,6 +69,7 @@ get_unique_list_elements <- function(a,b) {
                        plot_indicator = NA,
                        get_indicator = NA,
                        mask_extreme = NA,
+                       fast_eval = NA,
                        return_hsv = NA,
                        subset_only = NA,
                        upper_bound = NA,
@@ -74,10 +78,10 @@ get_unique_list_elements <- function(a,b) {
                        crop_right = NA,
                        crop_top = NA,
                        crop_bottom = NA) {
-# nomenclature:
-# central arguments are spaced with '.'
-# booleans are spaced with '_'
-#
+    # nomenclature:
+    # central arguments are spaced with '.'
+    # booleans are spaced with '_'
+    #
 
 }
 

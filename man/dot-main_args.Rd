@@ -6,6 +6,7 @@
 \usage{
 .main_args(
   pixel.array = NA,
+  indicator.array = NA,
   pixel.idx = NA,
   target.color = NA,
   target.color.hsv = NA,
@@ -13,6 +14,7 @@
   plot_indicator = NA,
   get_indicator = NA,
   mask_extreme = NA,
+  fast_eval = NA,
   return_hsv = NA,
   subset_only = NA,
   upper_bound = NA,
@@ -25,6 +27,8 @@
 }
 \arguments{
 \item{pixel.array}{image array as loaded via duflor::load_image()}
+
+\item{indicator.array}{\code{pixel.array} as returned}
 
 \item{pixel.idx}{list declaring pixels to which target.color.hsv is applied}
 
@@ -43,13 +47,15 @@ are applied to the pixels. Set this argument to \code{TRUE} to also apply \code{
 This will increase the contrast of the image drastically, but might result in
 less favorable images.)}
 
+\item{fast_eval}{Use \verb{C++}-code where possible to reduce execution time?}
+
 \item{return_hsv}{TRUE by default. Controls whether or not function returns pixel-data in \code{HSV}-colorspace or in \code{RGB}}
 
 \item{subset_only}{do you want to load only a subset range of values}
 
 \item{upper_bound}{EITHER:
 \itemize{
-\item list of upper HSV-bounds, e.g. list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))
+\item list of upper HSV-bounds, e.g. \code{list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))}
 \item single vector of length 3 declaring a set of HSV-values
 }}
 
@@ -57,11 +63,11 @@ less favorable images.)}
 
 \item{crop_left}{number of pixels to crop from the left edge of the image}
 
-\item{crop_right}{see crop_left}
+\item{crop_right}{see \code{crop_left}}
 
-\item{crop_top}{see crop_left}
+\item{crop_top}{see \code{crop_left}}
 
-\item{crop_bottom}{see crop_left}
+\item{crop_bottom}{see \code{crop_left}}
 }
 \value{
 nothing. This function does \emph{literally nothing at all}

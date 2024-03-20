@@ -23,11 +23,11 @@ load_image(
 
 \item{crop_left}{number of pixels to crop from the left edge of the image}
 
-\item{crop_right}{see crop_left}
+\item{crop_right}{see \code{crop_left}}
 
-\item{crop_top}{see crop_left}
+\item{crop_top}{see \code{crop_left}}
 
-\item{crop_bottom}{see crop_left}
+\item{crop_bottom}{see \code{crop_left}}
 }
 \value{
 hsv-formatted pixel.array, unless \code{HSV==false}.

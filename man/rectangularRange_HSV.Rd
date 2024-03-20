@@ -11,20 +11,22 @@ rectangularRange_HSV(pixel.array, upper_bound, lower_bound)
 
 \item{upper_bound}{EITHER:
 \itemize{
-\item list of upper HSV-bounds, e.g. list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))
+\item list of upper HSV-bounds, e.g. \code{list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))}
 \item single vector of length 3 declaring a set of HSV-values
 }}
 
 \item{lower_bound}{see \code{upper_bound}}
 }
 \value{
-list-object with the following elements:
+upon success, returns a list-object with the following elements:
 \itemize{
 \item \code{pixel.idx} - pixel-locations of pixels detected between lower and upper bound.
 \item \code{pixel.count} - number of pixels detected between lower and upper bound
 \item \code{img.fraction} - fraction of image detected between lower and upper bound
 \item \code{original.img} - fed-in pixel.array
 }
+
+Upon failure to find any matching pixels, an empty matrix of dimensions \verb{[0, 1:2]} is returned
 }
 \description{
 Takes HSV-formatted pixel.array and bounds.
@@ -32,6 +34,7 @@ When determining which pixels lie within the bounds, only the \code{hue}- and \c
 values are respected. The \code{value}-component is not considered.
 }
 \note{
+The use of  \code{\link[=rectangularRange_HSV_cpp]{rectangularRange_HSV_cpp()}} is strongly suggested due to its drastically faster execution.
 Adopted from \link[countcolors:rectangularRange]{countcolors::rectangularRange}, reworked to work in HSV color
 space instead of RGB and simplified.
 }

@@ -1,4 +1,4 @@
-#' Title
+#' Extract pixels from image which fall inbetween lower- and upper bounds.
 #'
 #' @inheritParams .main_args
 #'
@@ -19,7 +19,7 @@
 #' @importFrom stringr str_flatten_comma
 #' @importFrom grDevices rgb2hsv
 #'
-extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.color = "hotpink", get_indicator = FALSE, plot_indicator = FALSE, mask_extreme = FALSE, return_hsv = TRUE) {
+extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = FALSE) {
     if (is.list(lower_bound) && is.list(upper_bound)) {
         if (length(lower_bound) != length(upper_bound)) {
             stop(
@@ -41,40 +41,58 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.col
                 )
             )
         }
-        inconsistent_list_params <- get_unique_list_elements(lower_bound, target.color)
-        if (as.logical(length(inconsistent_list_params) > 0)) {
-            stop(
-                simpleError(
-                    str_c(
-                        "Parameters 'lower_bound' and 'target.color' do not declare the same spectrums.",
-                        " ",
-                        "The following spectrums are unique to either one of them:\n",
-                        str_flatten_comma(inconsistent_list_params)
-                    )
-                )
-            )
-        }
         return_Object <- list()
-        for (type in names(lower_bound)) {
-            ret <- rectangularRange_HSV(
-                pixel.array = pixel.array,
-                lower_bound = lower_bound[[type]], # TODO: implement list-ranges to detect all relvant ranges??
-                upper_bound = upper_bound[[type]] # TODO: implement list-ranges to detect all relvant ranges??
-            )
-            if (get_indicator | plot_indicator) {
-                ret$indicator.img <- get_indicator_image(pixel.array, ret$pixel.idx, target.color[[type]], mask_extreme)
+        if (as.logical(fast_eval)) {
+            for (type in names(lower_bound)) {
+                ret <- list()
+                ret$pixel.idx <- rectangularRange_HSV_cpp(
+                    H = pixel.array[,,,1],
+                    S = pixel.array[,,,2],
+                    V = pixel.array[,,,3],
+                    lower_bound = lower_bound[[type]],
+                    upper_bound = upper_bound[[type]],
+                    image_width = dim(pixel.array)[1]
+                ) + 1
+                ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
+                ret$pixel.idx <- as.matrix(ret$pixel.idx)
+                mode(ret$pixel.idx) <- "integer"
+                ret$pixel.count <- nrow(ret$pixel.idx)
+                ret$img.fraction <- nrow(ret$pixel.idx)/ (nrow(pixel.array) * ncol(pixel.array))
+                return_Object[[type]] <- ret
             }
-            if (plot_indicator) {
-                plot_array_as_image_sRGB(HSVtoRGB(ret$indicator.img), main = str_c("indicator for '", type, "'"))
+        } else {
+            for (type in names(lower_bound)) {
+                ret <- list()
+                ret$pixel.idx <- rectangularRange_HSV(
+                    pixel.array = pixel.array,
+                    lower_bound = lower_bound[[type]], # TODO: implement list-ranges to detect all relvant ranges??
+                    upper_bound = upper_bound[[type]] # TODO: implement list-ranges to detect all relvant ranges??
+                )
+                ret$pixel.count <- nrow(ret$pixel.idx)
+                ret$img.fraction <- nrow(ret$pixel.idx)/ (nrow(pixel.array) * ncol(pixel.array))
+                return_Object[[type]] <- ret
             }
-            return_Object[[type]] <- ret
         }
         return(return_Object)
     } else {
-        return(rectangularRange_HSV(
-            pixel.array = pixel.array,
-            lower_bound = lower_bound,
-            upper_bound = upper_bound
-        ))
+        if (as.logical(fast_eval)) {
+            ret <- rectangularRange_HSV_cpp(
+                H = pixel.array[,,,1],
+                S = pixel.array[,,,2],
+                V = pixel.array[,,,3],
+                lower_bound = lower_bound[[type]],
+                upper_bound = upper_bound[[type]],
+                image_width = dim(pixel.array)[1]
+            ) + 1
+            ret <- as.matrix(ret)
+            mode(ret) <- "integer"
+            return(ret)
+        } else {
+            return(rectangularRange_HSV(
+                pixel.array = pixel.array,
+                lower_bound = lower_bound,
+                upper_bound = upper_bound
+            ))
+        }
     }
 }

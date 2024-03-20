@@ -1,6 +1,6 @@
 Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
-Version: 0.0.1.9010
+Version: 0.0.1.9013
 Author: Claudius Appel
 Authors@R: c(
     person("Claudius", "Appel", email =   "claudius.appel@freenet.de" , role = c("aut", "cre"))
@@ -20,7 +20,12 @@ Suggests:
     RBioFormats,
     rJava
 Config/testthat/edition: 3
-Imports: imager, stringr
+Imports: 
+    imager,
+    Rcpp,
+    stringr
 VignetteBuilder: knitr
 URL: https://github.com/Claudius-Appel/duflor/
 BugReports: https://github.com/Claudius-Appel/duflor/issues
+LinkingTo: 
+    Rcpp
