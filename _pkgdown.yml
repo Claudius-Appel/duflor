@@ -24,6 +24,7 @@ reference:
       - '`diagonal_adjacency`'
       - '`retrieve_adjacency_coords`'
       - '`rectangularRange_HSV`'
+      - '`rectangularRange_HSV_cpp`'
       - '`pixels_to_area`'
       - '`plot_array_as_image_sRGB`'
   - title: Internals/Helpers
@@ -32,5 +33,6 @@ reference:
       - '`apply_hsv_color_to_image_subset`'
       - '`get_indicator_image`'
       - '`get_unique_list_elements`'
-      - '`.main_args`'
       - '`objs`'
+      - '`validate_mask_edges`'
+      - '`.main_args`'

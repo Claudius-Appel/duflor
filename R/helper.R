@@ -48,13 +48,13 @@ get_unique_list_elements <- function(a,b) {
 #' @param return_hsv TRUE by default. Controls whether or not function returns pixel-data in `HSV`-colorspace or in `RGB`
 #' @param subset_only do you want to load only a subset range of values
 #' @param upper_bound EITHER:
-#' - list of upper HSV-bounds, e.g. list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))
+#' - list of upper HSV-bounds, e.g. `list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))`
 #' - single vector of length 3 declaring a set of HSV-values
 #' @param lower_bound see `upper_bound`
 #' @param crop_left number of pixels to crop from the left edge of the image
-#' @param crop_right see crop_left
-#' @param crop_top see crop_left
-#' @param crop_bottom see crop_left
+#' @param crop_right see `crop_left`
+#' @param crop_top see `crop_left`
+#' @param crop_bottom see `crop_left`
 #' @return nothing. This function does *literally nothing at all*
 #' @keywords internal
 #'
@@ -74,10 +74,10 @@ get_unique_list_elements <- function(a,b) {
                        crop_right = NA,
                        crop_top = NA,
                        crop_bottom = NA) {
-# nomenclature:
-# central arguments are spaced with '.'
-# booleans are spaced with '_'
-#
+    # nomenclature:
+    # central arguments are spaced with '.'
+    # booleans are spaced with '_'
+    #
 
 }
 

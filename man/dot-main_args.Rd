@@ -49,7 +49,7 @@ less favorable images.)}
 
 \item{upper_bound}{EITHER:
 \itemize{
-\item list of upper HSV-bounds, e.g. list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))
+\item list of upper HSV-bounds, e.g. \code{list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower))}
 \item single vector of length 3 declaring a set of HSV-values
 }}
 
@@ -57,11 +57,11 @@ less favorable images.)}
 
 \item{crop_left}{number of pixels to crop from the left edge of the image}
 
-\item{crop_right}{see crop_left}
+\item{crop_right}{see \code{crop_left}}
 
-\item{crop_top}{see crop_left}
+\item{crop_top}{see \code{crop_left}}
 
-\item{crop_bottom}{see crop_left}
+\item{crop_bottom}{see \code{crop_left}}
 }
 \value{
 nothing. This function does \emph{literally nothing at all}

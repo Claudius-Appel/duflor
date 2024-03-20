@@ -10,6 +10,12 @@
     <loc>https://github.com/Claudius-Appel/duflor/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/Claudius-Appel/duflor/articles/interaction-with-other-packages.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/articles/options-for-increased-performance.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/Claudius-Appel/duflor/authors.html</loc>
   </url>
   <url>
@@ -83,5 +89,8 @@
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/sRGBtoRGB.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/validate_mask_edges.html</loc>
   </url>
 </urlset>
