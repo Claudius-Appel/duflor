@@ -19,7 +19,7 @@
 #' @importFrom stringr str_flatten_comma
 #' @importFrom grDevices rgb2hsv
 #'
-extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.color = "hotpink", get_indicator = FALSE, plot_indicator = FALSE, mask_extreme = FALSE, return_hsv = TRUE, fast_eval = FALSE) {
+extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = FALSE) {
     if (is.list(lower_bound) && is.list(upper_bound)) {
         if (length(lower_bound) != length(upper_bound)) {
             stop(
@@ -34,19 +34,6 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.col
                 simpleError(
                     str_c(
                         "Parameters 'lower_bound' and 'upper_bound' do not declare the same spectrums.",
-                        " ",
-                        "The following spectrums are unique to either one of them:\n",
-                        str_flatten_comma(inconsistent_list_params)
-                    )
-                )
-            )
-        }
-        inconsistent_list_params <- get_unique_list_elements(lower_bound, target.color)
-        if (as.logical(length(inconsistent_list_params) > 0)) {
-            stop(
-                simpleError(
-                    str_c(
-                        "Parameters 'lower_bound' and 'target.color' do not declare the same spectrums.",
                         " ",
                         "The following spectrums are unique to either one of them:\n",
                         str_flatten_comma(inconsistent_list_params)
