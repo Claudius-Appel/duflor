@@ -20,7 +20,12 @@ Suggests:
     RBioFormats,
     rJava
 Config/testthat/edition: 3
-Imports: imager, stringr
+Imports: 
+    imager,
+    Rcpp,
+    stringr
 VignetteBuilder: knitr
 URL: https://github.com/Claudius-Appel/duflor/
 BugReports: https://github.com/Claudius-Appel/duflor/issues
+LinkingTo: 
+    Rcpp
