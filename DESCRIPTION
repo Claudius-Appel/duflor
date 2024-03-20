@@ -1,6 +1,6 @@
 Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
-Version: 0.0.1.9011
+Version: 0.0.1.9012
 Author: Claudius Appel
 Authors@R: c(
     person("Claudius", "Appel", email =   "claudius.appel@freenet.de" , role = c("aut", "cre"))

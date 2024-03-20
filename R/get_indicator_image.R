@@ -3,7 +3,7 @@
 #' @inheritParams change_pixel_color_HSV
 #'
 #' @return `pixel.array` with hsv-values of pixels at positions `pixel.idx` modified.
-#' @keywords internal
+#' @export
 #'
 get_indicator_image <- function(pixel.array, pixel.idx, target.color, mask_extreme) {
     return(change_pixel_color_HSV(

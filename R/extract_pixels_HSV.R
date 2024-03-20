@@ -109,12 +109,3 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, target.col
         }
     }
 }
-
-plot_indicator_image <- function(pixel.array, pixel.idx, target.color, mask_extreme, type) {
-    if (get_indicator | plot_indicator) {
-        ret$indicator.img <- get_indicator_image(pixel.array, ret$pixel.idx, target.color[[type]], mask_extreme)
-    }
-    if (plot_indicator) {
-        plot_array_as_image_sRGB(HSVtoRGB(ret$indicator.img), main = str_c("indicator for '", type, "'"))
-    }
-}
