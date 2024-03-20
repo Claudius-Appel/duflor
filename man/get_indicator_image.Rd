@@ -24,4 +24,3 @@ less favorable images.)}
 \description{
 wrapper around \code{change_pixel_color_HVS()} for the intention of clarity.
 }
-\keyword{internal}
