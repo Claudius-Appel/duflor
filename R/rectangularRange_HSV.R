@@ -15,8 +15,10 @@
 #' @export
 #'
 #' @note
+#' The use of  [rectangularRange_HSV_cpp()] is strongly suggested due to its drastically faster execution.
 #' Adopted from [countcolors::rectangularRange], reworked to work in HSV color
 #' space instead of RGB and simplified.
+#'
 #'
 #' @examples
 #' \dontrun{

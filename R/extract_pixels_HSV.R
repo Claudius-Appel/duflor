@@ -1,4 +1,4 @@
-#' Title
+#' Extract pixels from image which fall inbetween lower- and upper bounds.
 #'
 #' @inheritParams .main_args
 #'
