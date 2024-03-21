@@ -125,15 +125,30 @@
     options(duflor.default_identifier_area = 0.503) # cm^2
 
 }
+#' onUnLoad-routine: Tears down package configuration
+#'
+#' The function unsets various options used by the package:
+#'
+#' - "duflor.default_hsv_spectrums"
+#' - "duflor.default_identifier_area"
+#' - "duflor.java_available"
+#' - "duflor.RBF_available"
+#' - "duflor..used_JVM_heapspace"
+#' - "duflor..used_JVM_heap_unit"
+#'
+#' @param lib /
+#' @param pkg /
+#'
+#' @keywords internal
+#'
 .onUnLoad <- function(lib, pkg) {
-    # ## reset Java parameters
-    # options(java.parameters = getOption("dfl.java_parameters"))
-    # options(dfl.java_parameters = NULL)
-
+    # unset options
     options(duflor.default_hsv_spectrums = NULL)
     options(duflor.default_identifier_area = NULL)
     options(duflor.java_available = NULL)
     options(duflor.RBF_available = NULL)
+    options(duflor..used_JVM_heapspace = NULL)
+    options(duflor..used_JVM_heap_unit = NULL)
 }
 #' Title
 #'
