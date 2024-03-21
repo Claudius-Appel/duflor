@@ -45,28 +45,29 @@ get_javaVM_exceptions <- function() {
 #' @importFrom stringr str_c
 #' @importFrom imager as.cimg
 #' @importFrom imager load.image
+#' @importFrom utils packageName
 #'
 load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_left=0, crop_right=0, crop_top=0, crop_bottom=0) {
-# TODO IMPORTANT:
-#
-# GB <- 8
-# options(java.parameters = paste0("-Xmx", GB, "g")) ## this works.
-# library(duflor) # remember to set up the java heap-size prior to loading duflor. This is _important_.
-#
-# THESE LINES MUST BE DOCUMENTED TO BE EXECUTED PRIOR TO CALLING `library(duflor)`. OTHERWHISE `RBioFormats::read.image()` will most most most likely fail
     ## if we subset, we use RBioFormats. Thus, we first have to mount a java-VM
     ## (or confirm one was mounted already)
     if (isTRUE(as.logical(subset_only))) {
         if (getOption("duflor.java_available")) { ## assert that rJava is installed when attempting to load Image
-            chk <- check_javaVM_setup()
-            r_chk <- setup_javaVM(8)
+            chk <- get_javaVM_exceptions()
             if (chk) {
-                if (!r_chk) {
+                # reinit the JVM if it contains exceptions
+                r_chk <- reinitialise_javaVM(,,packageName())
+                # if this still didn't work, error out
+                chk <- get_javaVM_exceptions()
+                if (chk) {
                     stop(
                         simpleError(
                             str_c(
-                                "The java-VM could not be mounted successfully.",
-                                "\nWithout the VM, images cannot be subset prior to analysis"
+                                "The java-VM could not be re-mounted successfully.",
+                                "\nWithout the VM, images cannot be subset prior to analysis.",
+                                "\nUsed heapspace: ",
+                                getOption("duflor..used_JVM_heapspace"),
+                                " ",
+                                getOption("duflor..used_JVM_heap_unit")
                                 )
                         )
                     )
