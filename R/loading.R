@@ -1,15 +1,18 @@
 #' Set java-parameters required for VM-setup.
 #'
-#' @param gb integer number of gigabytes of heap-space to assign to the Java environment.
+#' Used internally by [load_image()].
+#' If the returned heapspace size used for initialisation is less than 8 gb,
+#' issues a warning suggesting to re-initialise the value before loading the package.
+#'
+#' @param gb integer number of gigabytes of heapspace to assign to the Java environment.
 #'
 #' @return call to `check_javaVM_setup()`
 #' @export
 #' @importFrom stringr str_c
 #'
-prep_loading <- function(gb = 8) {
+setup_javaVM <- function(gb = 8) {
 
-    print(ret <- check_javaVM_setup())
-    return(ret)
+    return(check_javaVM_setup())
 }
 #' Determine whether or not the java-VM required for "RBioFormats" is set up
 #'
@@ -50,7 +53,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
     if (isTRUE(as.logical(subset_only))) {
         if (getOption("duflor.java_available")) { ## assert that rJava is installed when attempting to load Image
             chk <- check_javaVM_setup()
-            r_chk <- prep_loading(8)
+            r_chk <- setup_javaVM(8)
             if (chk) {
                 if (!r_chk) {
                     stop(
