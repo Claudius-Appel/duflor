@@ -3,10 +3,6 @@ template:
   bootstrap: 5
 
 reference:
-  - title: Setup
-    desc: initial setup
-    contents:
-      - '`prep_loading`'
   - title: Main Utility - central processing
     desc: central processing functions
     contents:
@@ -27,7 +23,7 @@ reference:
       - '`adjacency`'
       - '`diagonal_adjacency`'
       - '`retrieve_adjacency_coords`'
-      - '`pixels_to_area`'
+      - '`convert_pixels_to_area`'
       - '`validate_mask_edges`'
   - title: Display
     desc: display image-arrays
@@ -40,7 +36,14 @@ reference:
     contents:
       - '`apply_hsv_color_to_image_subset`'
       - '`norm_to_range_01`'
-      - '`check_javaVM_setup`'
       - '`get_unique_list_elements`'
       - '`objs`'
       - '`.main_args`'
+  - title: Loading and Attaching
+    desc: functions related to loading and/or attaching this package
+    contents:
+      - '`get_javaVM_exceptions`'
+      - '`reinitialise_javaVM`'
+      - '`.onAttach`'
+      - '`.onLoad`'
+      - '`.onUnLoad`'

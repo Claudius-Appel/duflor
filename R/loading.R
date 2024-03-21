@@ -1,27 +1,36 @@
-#' Set java-parameters required for VM-setup.
+#' Reinitalises JVM with previously used parameters
 #'
-#' @param gb integer number of gigabytes of heap-space to assign to the Java environment.
+#' Used internally by [load_image()].
+#' If [get_javaVM_exceptions()] found any exceptions, this function is called
+#' and re-initialises the JVM with the provided values.
+#' issues a warning suggesting to re-initialise the value before loading the package.
+#' @param heapspace integer heapspace to be allocated to the new JVM. If omitted, the contents of `getOption("duflor..used_JVM_heapspace")` is used.
+#' @param unit unit of `heapspace`. Must be either of `c("g","m")`. If omitted, the contents of `getOption("duflor..used_JVM_heap_unit")` is used.
+#' @param pkg return-value of `packageName()`
 #'
-#' @return call to `check_javaVM_setup()`
-#' @export
-#' @importFrom stringr str_c
-#'
-prep_loading <- function(gb = 8) {
-
-    print(ret <- check_javaVM_setup())
-    return(ret)
-}
-#' Determine whether or not the java-VM required for "RBioFormats" is set up
-#'
-#' @return boolean value whether or not the JAVA-VM is set up or not
 #' @keywords internal
 #'
-check_javaVM_setup <- function() {
-    java_opt <- getOption("java.parameters")
-    ret <- is.null(java_opt)
-    print(java_opt)
-    print(ret)
-    return(ret)
+reinitialise_javaVM <- function(heapspace=NA,unit=NA,pkg) {
+    if (is.na(heapspace)) {
+        heapspace <- getOption("duflor..used_JVM_heapspace")
+    }
+    if (is.na(unit)) {
+        unit <- getOption("duflor..used_JVM_heap_unit")
+    }
+    rJava::.jpackage(pkg, parameters=str_c("-Xmx",heapspace,unit))
+}
+#' retrieve exceptions of the JVM
+#'
+#' check the JVM for any pending exceptions, clear them and return TRUE
+#' if exceptions were found.
+#'
+#' @return boolean value whether or not the JVM contained exceptions.
+#' @keywords internal
+#' @importFrom stringr str_extract
+#'
+get_javaVM_exceptions <- function() {
+    exception_found <- as.logical(rJava::.jcheck(silent = T))
+    return(exception_found)
 }
 #' load image as HSV or RGB-array
 #'
@@ -36,28 +45,29 @@ check_javaVM_setup <- function() {
 #' @importFrom stringr str_c
 #' @importFrom imager as.cimg
 #' @importFrom imager load.image
+#' @importFrom utils packageName
 #'
 load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_left=0, crop_right=0, crop_top=0, crop_bottom=0) {
-# TODO IMPORTANT:
-#
-# GB <- 8
-# options(java.parameters = paste0("-Xmx", GB, "g")) ## this works.
-# library(duflor) # remember to set up the java heap-size prior to loading duflor. This is _important_.
-#
-# THESE LINES MUST BE DOCUMENTED TO BE EXECUTED PRIOR TO CALLING `library(duflor)`. OTHERWHISE `RBioFormats::read.image()` will most most most likely fail
     ## if we subset, we use RBioFormats. Thus, we first have to mount a java-VM
     ## (or confirm one was mounted already)
     if (isTRUE(as.logical(subset_only))) {
         if (getOption("duflor.java_available")) { ## assert that rJava is installed when attempting to load Image
-            chk <- check_javaVM_setup()
-            r_chk <- prep_loading(8)
+            chk <- get_javaVM_exceptions()
             if (chk) {
-                if (!r_chk) {
+                # reinit the JVM if it contains exceptions
+                r_chk <- reinitialise_javaVM(,,packageName())
+                # if this still didn't work, error out
+                chk <- get_javaVM_exceptions()
+                if (chk) {
                     stop(
                         simpleError(
                             str_c(
-                                "The java-VM could not be mounted successfully.",
-                                "\nWithout the VM, images cannot be subset prior to analysis"
+                                "The java-VM could not be re-mounted successfully.",
+                                "\nWithout the VM, images cannot be subset prior to analysis.",
+                                "\nUsed heapspace: ",
+                                getOption("duflor..used_JVM_heapspace"),
+                                " ",
+                                getOption("duflor..used_JVM_heap_unit")
                                 )
                         )
                     )

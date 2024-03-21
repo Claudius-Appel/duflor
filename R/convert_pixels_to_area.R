@@ -25,7 +25,7 @@
 #'
 #' @export
 #' @importFrom utils hasName
-pixels_to_area <- function(pixel.counts) {
+convert_pixels_to_area <- function(pixel.counts) {
     default_identifier_area <- getOption("duflor.default_identifier_area")
     if (!hasName(pixel.counts,"identifier")) {
         stop(simpleError("FATAL: Unknown identifier count. Is the identifier missing?"))
