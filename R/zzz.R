@@ -166,7 +166,11 @@
         packageStartupMessage("The package RBioFormats is not available. Image subsetting during loading relies on RBioFormats. Image-Loading will default to reading the complete image.")
     } else {
         if (requireNamespace("rJava",quietly = T)) {
-            packageStartupMessage("Package 'RBioFormats' is available. Image subsetting during loading is possible. Setting <java_parameters>: '",getOption("java.parameters"),"'")
+            packageStartupMessage(
+                "Package 'RBioFormats' is available. Image subsetting during loading is possible. The Java-VM was initialised with ",
+                getOption("duflor..used_JVM_heapspace"),
+                getOption("duflor..used_JVM_heap_unit")
+                ," of heap space")
         } else {
             packageStartupMessage("Package 'RBioFormats' is available, but its dependency 'rJava' is not. Image subsetting relies on RBioFormats. Image-Loading will default to reading the complete image.")
 
