@@ -31,13 +31,19 @@
     <loc>https://github.com/Claudius-Appel/duflor/reference/change_pixel_color_HSV.html</loc>
   </url>
   <url>
-    <loc>https://github.com/Claudius-Appel/duflor/reference/check_javaVM_setup.html</loc>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/convert_pixels_to_area.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/diagonal_adjacency.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/dot-main_args.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/dot-onLoad.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/dot-onUnLoad.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/duflor-package.html</loc>
@@ -47,6 +53,9 @@
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/get_indicator_image.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/get_javaVM_exceptions.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/get_unique_list_elements.html</loc>
@@ -67,22 +76,19 @@
     <loc>https://github.com/Claudius-Appel/duflor/reference/objs.html</loc>
   </url>
   <url>
-    <loc>https://github.com/Claudius-Appel/duflor/reference/pixels_to_area.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/plot_array_as_image_sRGB.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/plot_indicator_image.html</loc>
   </url>
   <url>
-    <loc>https://github.com/Claudius-Appel/duflor/reference/prep_loading.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/rectangularRange_HSV.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/rectangularRange_HSV_cpp.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/Claudius-Appel/duflor/reference/reinitialise_javaVM.html</loc>
   </url>
   <url>
     <loc>https://github.com/Claudius-Appel/duflor/reference/retrieve_adjacency_coords.html</loc>
