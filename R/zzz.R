@@ -157,7 +157,6 @@
 #' @importFrom utils packageDescription
 #' @return .
 #' @keywords internal
-#' @noRd
 #'
 .onAttach <- function(libname,pkgname) {
     packageStartupMessage("Attaching ",pkgname," version ",
