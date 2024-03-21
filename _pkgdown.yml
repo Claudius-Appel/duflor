@@ -3,10 +3,6 @@ template:
   bootstrap: 5
 
 reference:
-  - title: Setup
-    desc: initial setup
-    contents:
-      - '`prep_loading`'
   - title: Main Utility - central processing
     desc: central processing functions
     contents:
@@ -44,3 +40,10 @@ reference:
       - '`get_unique_list_elements`'
       - '`objs`'
       - '`.main_args`'
+  - title: Loading and Attaching
+    desc: functions related to loading and/or attaching this package
+      - '`get_javaVM_exceptions`'
+      - '`reinitialise_javaVM`'
+      - '`.onAttach`'
+      - '`.onLoad`'
+      - '`.onUnLoad`'
