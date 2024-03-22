@@ -13,7 +13,7 @@ Determine 2-dimensional plant area via known area of an identifier dot.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/Claudius-Appel/duflor/}
+  \item \url{https://Claudius-Appel.github.io/duflor/}
   \item Report bugs at \url{https://github.com/Claudius-Appel/duflor/issues}
 }
 
