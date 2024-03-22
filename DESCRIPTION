@@ -25,7 +25,7 @@ Imports:
     Rcpp,
     stringr
 VignetteBuilder: knitr
-URL: https://github.com/Claudius-Appel/duflor/
+URL: https://Claudius-Appel.github.io/duflor/
 BugReports: https://github.com/Claudius-Appel/duflor/issues
 LinkingTo: 
     Rcpp
