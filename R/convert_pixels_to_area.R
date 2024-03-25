@@ -10,7 +10,7 @@
 #'
 #' The pixel-count for `identifier` must be present, whereas the others are optional.
 #' The calculated area is internally unit-less. However, as the default value for
-# `duflor.default_identifier_area` is `0.503` \[cm^2\], the areas computed by this
+#' `duflor.default_identifier_area` is `r getOption("duflor.default_identifier_area")` \[cm^2\], the areas computed by this
 #' function is also in \[cm^2\].
 #'
 #' The assumed area of the identifier can be modified by excuting

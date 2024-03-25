@@ -27,9 +27,9 @@ The function initialises various options used by the package upon loading:
 \details{
 \strong{Rules for the initialisation of the JavaVM}:
 \enumerate{
-\item by default, the JVM is initialised with 8GB of heap space
-\item values lower than 8GB/8000MB are ignored, and rule 1) takes effect.
-\item To set custom values, execute \code{option(duflor.java_heapspace_in_GB)} \strong{before}
+\item by default, the JVM is initialised with 900MB of heap space
+\item values lower than 900MB are ignored, and rule 1) takes effect.
+\item To set custom values, execute \code{option(duflor.java_heapspace_in_MB)} \strong{before}
 loading the package (see notes below)
 }
 }
@@ -44,7 +44,7 @@ To resolve this issue,
 \enumerate{
 \item save your work
 \item initialise a new R-session
-\item execute \code{option(duflor.java_heapspace_in_GB)} with a value \verb{>8}
+\item execute \code{option(duflor.java_heapspace_in_MB)} with a value >900MB
 \item load \emph{duflor} via \code{library(duflor)} or by calling \code{duflor::any_function()}
 \item optionally check the console output to validate that the correct value was set.
 }

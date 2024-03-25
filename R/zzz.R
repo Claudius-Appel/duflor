@@ -9,9 +9,9 @@
 #'     - `duflor.RBF_available`
 #'
 #' **Rules for the initialisation of the JavaVM**:
-#' 1. by default, the JVM is initialised with 8GB of heap space
-#' 2. values lower than 8GB/8000MB are ignored, and rule 1) takes effect.
-#' 3. To set custom values, execute `option(duflor.java_heapspace_in_GB)` **before**
+#' 1. by default, the JVM is initialised with `r getOption("duflor.default_java_heapspace")`MB of heap space
+#' 2. values lower than 900MB are ignored, and rule 1) takes effect.
+#' 3. To set custom values, execute `option(duflor.java_heapspace_in_MB)` **before**
 #'    loading the package (see notes below)
 #'
 #'
@@ -26,7 +26,7 @@
 #'
 #' 1. save your work
 #' 2. initialise a new R-session
-#' 3. execute `option(duflor.java_heapspace_in_GB)` with a value `>8`
+#' 3. execute `option(duflor.java_heapspace_in_MB)` with a value >`r getOption("duflor.default_java_heapspace")`MB
 #' 4. load _duflor_ via `library(duflor)` or by calling `duflor::any_function()`
 #' 5. optionally check the console output to validate that the correct value was set.
 #'
@@ -54,49 +54,32 @@
         # as we need to configure some options prior to that happening, this would not work.
 
         #### initialise java VM ####
-        current_java_heapspace <- getOption("duflor.java_heapspace_in_GB")
-        if (is.null(current_java_heapspace)) {
-            current_java_heapspace <- 8
-            heap_unit <- "g"
-            # packageStartupMessage("no val set, init with 8g")
-            rJava::.jpackage(pkg, parameters=str_c("-Xmx8",heap_unit))
-            options(java.parameters = str_c("-Xmx8",heap_unit))
+        # set default values
+        default_java_heapspace <- 900
+        default_java_heap_unit <- "m"
+        options("duflor.default_java_heapspace" = default_java_heapspace)
+        options("duflor.default_java_heap_unit" = default_java_heap_unit)
+
+        current_java_heapspace <- getOption("duflor.java_heapspace_in_MB") # retrieve custom preset value
+
+        if (is.null(current_java_heapspace)) { ## assign default heapspace (see above)
+            used_java_heapspace <- default_java_heapspace
+            rJava::.jpackage(pkg, parameters=str_c("-Xmx",used_java_heapspace,default_java_heap_unit))
+            options(java.parameters = str_c("-Xmx",used_java_heapspace,default_java_heap_unit))
         } else {
-            if (current_java_heapspace<1) { # given in GB, must be converted to MB
-                current_java_heapspace <- current_java_heapspace * 1000
-                heap_unit <- "m"
-            } else {
-                heap_unit <- "g"
+            # assumption: values are given in MB
+            if (current_java_heapspace<default_java_heapspace) { ## if assigned heapspace in MB is < 900MB, overwrite with this value
+                used_java_heapspace <- default_java_heapspace
+            } else { ## else assign the custom-set value retrieved from options.
+                used_java_heapspace <- current_java_heapspace
             }
-            if (heap_unit=="m") {
-                if (current_java_heapspace<8000) {
-                    # less than 8000MB is to be set, set 8000MB
-                    # packageStartupMessage(str_c("val<8000mb set, init with 8000"," ",heap_unit))
-                    rJava::.jpackage(pkg, parameters=str_c("-Xmx8000",heap_unit))
-                    options(java.parameters = str_c("-Xmx8000",heap_unit))
-                } else {
-                    # set more than 8000MB
-                    # packageStartupMessage(str_c("val>8000mb set, init with ",current_java_heapspace," ",heap_unit))
-                    rJava::.jpackage(pkg, parameters=str_c("-Xmx",current_java_heapspace,heap_unit))
-                    options(java.parameters = str_c("-Xmx",current_java_heapspace,heap_unit))
-                }
-            } else if (heap_unit=="g") {
-                if (current_java_heapspace<8) {
-                    # less than 8GB is to be set, set 8GB
-                    # packageStartupMessage(str_c("val<8gb set, init with 8"," ",heap_unit))
-                    rJava::.jpackage(pkg, parameters=str_c("-Xmx8",heap_unit))
-                    options(java.parameters = str_c("-Xmx8",heap_unit))
-                } else {
-                    # more than 8GB is to be set
-                    # packageStartupMessage(str_c("val>8g set, init with ",current_java_heapspace," ",heap_unit))
-                    rJava::.jpackage(pkg, parameters=str_c("-Xmx",current_java_heapspace,heap_unit))
-                    options(java.parameters = str_c("-Xmx",current_java_heapspace,heap_unit))
-                }
-            }
+            ## and now assign it
+            rJava::.jpackage(pkg, parameters=str_c("-Xmx",used_java_heapspace,default_java_heap_unit))
+            options(java.parameters = str_c("-Xmx",used_java_heapspace,default_java_heap_unit))
         }
         # As a result, we can now store the currently set values:
-        options(duflor..used_JVM_heapspace = current_java_heapspace)
-        options(duflor..used_JVM_heap_unit = heap_unit)
+        options(duflor..used_JVM_heapspace = used_java_heapspace)
+        options(duflor..used_JVM_heap_unit = default_java_heap_unit)
         #### check RBioFormats availability ####
         options(duflor.java_available = requireNamespace("rJava",quietly = T))
         options(duflor.RBF_available = requireNamespace("RBioFormats",quietly = T))
