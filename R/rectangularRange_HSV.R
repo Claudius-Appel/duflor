@@ -39,6 +39,7 @@ rectangularRange_HSV <- function(pixel.array, upper_bound, lower_bound) {
                  # & (lower_bound[3] <= pixel.array[, , 1, 3] & pixel.array[, , 1, 3] <= upper_bound[3])
                  ,arr.ind = TRUE
     )
+    dimnames(idx)[[2]] <- c("x","y")
     if (length(idx) == 0) { # no pixels match the requirements.
         return(idx)
     } else {

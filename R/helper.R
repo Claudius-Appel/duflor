@@ -158,7 +158,7 @@ diagonal_adjacency <- function(pixel.idx) {
 #'     )
 #' }
 retrieve_adjacency_coords <- function(pixel.idx,cluster_id) {
-    pixel.idx[pixel.idx[,3]==cluster_id,]
+    pixel.idx[pixel.idx[,"clus"]==cluster_id,]
 }
 
 #' wrapper around `object.size()`
