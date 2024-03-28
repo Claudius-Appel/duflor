@@ -48,6 +48,6 @@ DataFrame rectangularRange_HSV_cpp(NumericVector H,
             col_indices.push_back(col);
         }
     }
-    return DataFrame::create(_["row"] = row_indices,
-                             _["col"] = col_indices);
+    return DataFrame::create(_["x"] = row_indices,
+                             _["y"] = col_indices);
 }

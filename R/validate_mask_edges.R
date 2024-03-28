@@ -37,10 +37,10 @@ validate_mask_edges <- function(mask.idx,mask_name,array_dim,image.path) {
     # get the matched pixels that are as close to the edges as possible
     # array_dim[1]: width of pixel.array
     # array_dim[2]: height of pixel.array
-    y_bottom <- max(mask.idx[,2])
-    y_top <- min(mask.idx[,2])
-    x_right<- max(mask.idx[,1])
-    x_left <- min(mask.idx[,1])
+    y_bottom <- max(mask.idx[,"y"])
+    y_top <- min(mask.idx[,"y"])
+    x_right<- max(mask.idx[,"x"])
+    x_left <- min(mask.idx[,"x"])
     ret <- list(left = FALSE,
                 right = FALSE,
                 top = FALSE,
