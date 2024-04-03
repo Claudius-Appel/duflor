@@ -12,7 +12,7 @@ A cluster contains all pixels which share a non-diagonal link with each other.">
     
     <a class="navbar-brand me-2" href="../index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9020</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9021</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,13 +54,18 @@ A cluster contains all pixels which share a non-diagonal link with each other.</
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">adjacency</span><span class="op">(</span><span class="va">pixel.idx</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">adjacency</span><span class="op">(</span><span class="va">pixel.idx</span>, sort_by_frequency <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>pixel.idx</dt>
 <dd><p>pixel.idx-object</p></dd>
+
+
+<dt>sort_by_frequency</dt>
+<dd><p>logical, control if clusters should be enumerated from 1 &gt; N based on the number of elements in them.
+For more info, see documentation on <code><a href="reassign_integers_by_frequency.html">reassign_integers_by_frequency()</a></code></p></dd>
 
 </dl></div>
     <div class="section level2">
