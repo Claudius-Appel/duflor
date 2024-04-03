@@ -133,6 +133,9 @@ reassign_integers_by_frequency <- function(clus) {
 #'
 #' Reference: <https://stackoverflow.com/a/37946855>
 #' @param pixel.idx pixel.idx-object
+#' @param sort_by_frequency
+#' logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
+#' For more info, see documentation on [duflor::reassign_integers_by_frequency()]
 #'
 #' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
 #' @export
@@ -179,9 +182,6 @@ diagonal_adjacency <- function(pixel.idx,sort_by_frequency = TRUE) {
 #'
 #' @inheritParams .main_args
 #' @param cluster_id index of the to-be-retrieved cluster
-#' @param sort_by_frequency
-#' logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
-#' For more info, see documentation on [duflor::reassign_integers_by_frequency()]
 #'
 #' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
 #' @export
