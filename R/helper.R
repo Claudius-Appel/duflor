@@ -84,8 +84,43 @@ get_unique_list_elements <- function(a,b) {
     #
 
 }
+#' takes a cluster-range of integers and reassigns them based on their frequency
+#'
+#' For a input `clus = c(1,1,1,2,2,3,3,3,3)`, returns `clus = c(2,2,2,3,3,1,1,1,1)`.
+#' @param clus vector of integers.
+#'
+#' @return frequency-based reassigned instance of `clus`
+#' @keywords internal
+#'
+#' @examples
+#' \dontrun{
+#' clus <- c(1,1,1,2,2,3,3,3,3)
+#' clus_new <- reassign_integers_by_frequency(clus)
+#' print(clus)
+#' print(clus_new)
+#' }
+reassign_integers_by_frequency <- function(clus) {
+    if (is.null(clus)) {
+        stop(
+            simpleError(
+                "input must not be null"
+            )
+        )
+    }
+    if (isFALSE(is.vector(clus))) {
+        stop(
+            simpleError(
+                "input is not a vector."
+            )
+        )
+    }
+    # sort by descending frequency
+    sorted_clusters <- sort(table(clus), decreasing = TRUE)
 
-
+    # remap the old cluster numbers to new, frequency-sorted ones
+    clus <- match(clus, names(sorted_clusters))
+    return(clus)
+}
 #' add 4D-adjacency-grouping to `pixel.idx`-object
 #'
 #' The function assigns clusters to all coordinate-pairs in `pixel.idx`.
