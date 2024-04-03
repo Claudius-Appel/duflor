@@ -1,37 +1,3 @@
-#' Reinitalises JVM with previously used parameters
-#'
-#' Used internally by [load_image()].
-#' If [get_javaVM_exceptions()] found any exceptions, this function is called
-#' and re-initialises the JVM with the provided values.
-#' issues a warning suggesting to re-initialise the value before loading the package.
-#' @param heapspace integer heapspace to be allocated to the new JVM. If omitted, the contents of `getOption("duflor..used_JVM_heapspace")` is used.
-#' @param unit unit of `heapspace`. Must be either of `c("g","m")`. If omitted, the contents of `getOption("duflor..used_JVM_heap_unit")` is used.
-#' @param pkg return-value of `packageName()`
-#'
-#' @keywords internal
-#'
-reinitialise_javaVM <- function(heapspace=NA,unit=NA,pkg) {
-    if (is.na(heapspace)) {
-        heapspace <- getOption("duflor..used_JVM_heapspace")
-    }
-    if (is.na(unit)) {
-        unit <- getOption("duflor..used_JVM_heap_unit")
-    }
-    rJava::.jpackage(pkg, parameters=str_c("-Xmx",heapspace,unit))
-}
-#' retrieve exceptions of the JVM
-#'
-#' check the JVM for any pending exceptions, clear them and return TRUE
-#' if exceptions were found.
-#'
-#' @return boolean value whether or not the JVM contained exceptions.
-#' @keywords internal
-#' @importFrom stringr str_extract
-#'
-get_javaVM_exceptions <- function() {
-    exception_found <- as.logical(rJava::.jcheck(silent = T))
-    return(exception_found)
-}
 #' load image as HSV or RGB-array
 #'
 #' @inheritParams .main_args
