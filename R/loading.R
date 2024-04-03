@@ -101,23 +101,26 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
                     )
                 )
             }
-            message("duflor.load_image(): Image loaded via imager, then subset manually")
             if (as.logical(return_hsv)) {
                 return( # subsetting, HSV
                     RGBtoHSV(
                         sRGBtoRGB(
-                            as.cimg(
+                            # suppress known-warning about assuming 3rd dimension
+                            #  of return value of `as.cimg` to be "time/depth":
+                            #  'Assuming third dimension corresponds to time/depth'
+                            #  structure of return value: [x,y,t/d,[r,g,b]]
+                            suppressWarnings(as.cimg(
                                 ig_ret[x1:x2,y1:y2,,],dim = c(x2-x1,y2-y1,1,3)
                                 )
-                            )
+                            ))
                         )
                     )
             } else {
                 return(  # subsetting, RGB
                     sRGBtoRGB(
-                        as.cimg(
+                        suppressWarnings(as.cimg(
                             ig_ret[x1:x2,y1:y2,,],dim = c(x2-x1,y2-y1,1,3)
-                        )
+                        ))
                     )
                 )
             }
