@@ -53,6 +53,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
                     upper_bound = upper_bound[[type]],
                     image_width = dim(pixel.array)[1]
                 ) + 1
+
                 ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
                 ret$pixel.idx <- as.matrix(ret$pixel.idx)
                 mode(ret$pixel.idx) <- "integer"
@@ -84,6 +85,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
                 upper_bound = upper_bound[[type]],
                 image_width = dim(pixel.array)[1]
             ) + 1
+            ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
             ret <- as.matrix(ret)
             mode(ret) <- "integer"
             return(ret)

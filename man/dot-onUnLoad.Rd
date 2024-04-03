@@ -18,10 +18,6 @@ The function unsets various options used by the package:
 \itemize{
 \item "duflor.default_hsv_spectrums"
 \item "duflor.default_identifier_area"
-\item "duflor.java_available"
-\item "duflor.RBF_available"
-\item "duflor..used_JVM_heapspace"
-\item "duflor..used_JVM_heap_unit"
 }
 }
 \keyword{internal}

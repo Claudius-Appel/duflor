@@ -14,40 +14,17 @@
 \description{
 The function initialises various options used by the package upon loading:
 \enumerate{
-\item Most notably, it initialises the javaVM required for loading subsets of images.
 \item The following options are initialised:
 \itemize{
 \item \code{duflor.default_hsv_spectrums}
 \item \code{duflor.default_identifier_area}
-\item \code{duflor.java_available}
-\item \code{duflor.RBF_available}
 }
-}
-}
-\details{
-\strong{Rules for the initialisation of the JavaVM}:
-\enumerate{
-\item by default, the JVM is initialised with 900MB of heap space
-\item values lower than 900MB are ignored, and rule 1) takes effect.
-\item To set custom values, execute \code{option(duflor.java_heapspace_in_MB)} \strong{before}
-loading the package (see notes below)
 }
 }
 \note{
 When a package \code{pkg} is attached (see Link below) via \code{library(pkg)}, or the first time
 a function of the package \code{pkg} is called via \code{pkg::fun()}, this function
 gets called.
-
-If the package runs into an \verb{java.lang.OutOfMemoryError: Java heap space}-error
-while loading images via \code{\link[=load_image]{load_image()}}, the heapspace of the JVM is not sufficiently large.
-To resolve this issue,
-\enumerate{
-\item save your work
-\item initialise a new R-session
-\item execute \code{option(duflor.java_heapspace_in_MB)} with a value >900MB
-\item load \emph{duflor} via \code{library(duflor)} or by calling \code{duflor::any_function()}
-\item optionally check the console output to validate that the correct value was set.
-}
 }
 \seealso{
 The differences between \code{attaching} and \code{loading} a package are somewhat

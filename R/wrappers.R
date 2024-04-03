@@ -193,4 +193,3 @@ RGBtoHSV <- function(...) imager::RGBtoHSV(...)
 sRGBtoRGB <- function(...) imager::sRGBtoRGB(...)
 #'
 #'
-### RBioFormats ###
