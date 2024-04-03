@@ -42,8 +42,6 @@ reference:
   - title: Loading and Attaching
     desc: functions related to loading and/or attaching this package
     contents:
-      - '`get_javaVM_exceptions`'
-      - '`reinitialise_javaVM`'
       - '`.onAttach`'
       - '`.onLoad`'
       - '`.onUnLoad`'
