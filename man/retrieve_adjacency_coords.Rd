@@ -10,6 +10,9 @@ retrieve_adjacency_coords(pixel.idx, cluster_id)
 \item{pixel.idx}{list declaring pixels to which target.color.hsv is applied}
 
 \item{cluster_id}{index of the to-be-retrieved cluster}
+
+\item{sort_by_frequency}{logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
+For more info, see documentation on \code{\link[=reassign_integers_by_frequency]{reassign_integers_by_frequency()}}}
 }
 \value{
 \code{pixel.idx} with added 3rd column \code{clus} mapping to a cluster

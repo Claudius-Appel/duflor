@@ -4,7 +4,7 @@
 \alias{adjacency}
 \title{add 4D-adjacency-grouping to \code{pixel.idx}-object}
 \usage{
-adjacency(pixel.idx)
+adjacency(pixel.idx, sort_by_frequency = TRUE)
 }
 \arguments{
 \item{pixel.idx}{pixel.idx-object}

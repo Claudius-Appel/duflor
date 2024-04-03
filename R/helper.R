@@ -140,9 +140,11 @@ reassign_integers_by_frequency <- function(clus) {
 #' @importFrom stats dist
 #' @importFrom stats hclust
 #'
-adjacency <- function(pixel.idx) {
+adjacency <- function(pixel.idx,sort_by_frequency = TRUE) {
     #TODO: rename functions to clarify naming conventions
-    cbind(pixel.idx, clus = cutree(hclust(dist(x = pixel.idx, method = "manhattan"), "single"), h = 1))
+    clus <- cutree(hclust(dist(x = pixel.idx, method = "manhattan"), "single"), h = 1)
+    clus <- reassign_integers_by_frequency(clus)
+    return(cbind(pixel.idx, clus = clus))
 }
 
 #' add 8D-adjacency-grouping to `pixel.idx`-object
@@ -157,6 +159,10 @@ adjacency <- function(pixel.idx) {
 #'
 #' Reference: <https://stackoverflow.com/a/37946855>
 #' @inheritParams .main_args
+#' @param sort_by_frequency
+#' logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
+#' For more info, see documentation on [duflor::reassign_integers_by_frequency()]
+#'
 #'
 #' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
 #' @export
@@ -164,13 +170,18 @@ adjacency <- function(pixel.idx) {
 #' @importFrom stats dist
 #' @importFrom stats hclust
 #'
-diagonal_adjacency <- function(pixel.idx) {
-    cbind(pixel.idx, clus = cutree(hclust(dist(x = pixel.idx, method = "maximum"), "single"), h = 1))
+diagonal_adjacency <- function(pixel.idx,sort_by_frequency = TRUE) {
+    clus = cutree(hclust(dist(x = pixel.idx, method = "maximum"), "single"), h = 1)
+    clus <- reassign_integers_by_frequency(clus)
+    return(cbind(pixel.idx, clus = clus))
 }
 #' return coordinates by cluster_id from `pixel.idx`
 #'
 #' @inheritParams .main_args
 #' @param cluster_id index of the to-be-retrieved cluster
+#' @param sort_by_frequency
+#' logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
+#' For more info, see documentation on [duflor::reassign_integers_by_frequency()]
 #'
 #' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
 #' @export
