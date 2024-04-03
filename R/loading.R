@@ -41,7 +41,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
             }
             message("duflor.load_image(): Image loaded via imager, then subset manually")
             if (as.logical(return_hsv)) {
-                return(
+                return( # subsetting, HSV
                     RGBtoHSV(
                         sRGBtoRGB(
                             as.cimg(
@@ -51,7 +51,7 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
                         )
                     )
             } else {
-                return(  # subsetting, HSV
+                return(  # subsetting, RGB
                     sRGBtoRGB(
                         as.cimg(
                             ig_ret[x1:x2,y1:y2,,],dim = c(x2-x1,y2-y1,1,3)
