@@ -4,7 +4,13 @@
 \alias{extract_pixels_HSV}
 \title{Extract pixels from image which fall inbetween lower- and upper bounds.}
 \usage{
-extract_pixels_HSV(pixel.array, lower_bound, upper_bound, fast_eval = FALSE)
+extract_pixels_HSV(
+  pixel.array,
+  lower_bound,
+  upper_bound,
+  fast_eval = TRUE,
+  bundle_pixelarray = FALSE
+)
 }
 \arguments{
 \item{pixel.array}{image array as loaded via duflor::load_image()}
@@ -18,6 +24,9 @@ extract_pixels_HSV(pixel.array, lower_bound, upper_bound, fast_eval = FALSE)
 }}
 
 \item{fast_eval}{Use \verb{C++}-code where possible to reduce execution time?}
+
+\item{bundle_pixelarray}{logical, indicating if the input parameter \code{pixel.array} is to be bundled into the return-value
+This is useful to retain \code{pixel.array} into the output if this function is called in a loop.}
 }
 \value{
 EITHER:

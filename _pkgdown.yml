@@ -37,13 +37,12 @@ reference:
       - '`apply_hsv_color_to_image_subset`'
       - '`norm_to_range_01`'
       - '`get_unique_list_elements`'
+      - '`reassign_integers_by_frequency`'
       - '`objs`'
       - '`.main_args`'
   - title: Loading and Attaching
     desc: functions related to loading and/or attaching this package
     contents:
-      - '`get_javaVM_exceptions`'
-      - '`reinitialise_javaVM`'
       - '`.onAttach`'
       - '`.onLoad`'
       - '`.onUnLoad`'

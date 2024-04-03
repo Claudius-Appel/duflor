@@ -36,6 +36,5 @@ hsv-formatted pixel.array, unless \code{HSV==false}.
 load image as HSV or RGB-array
 }
 \note{
-\code{load_image()} allows loading subsets of images using \code{RBioFormats::read.image()}, which in turn relies upon the package \code{rJava}.
-For the setup of \code{RBioFormats}, refer to \url{https://github.com/aoles/RBioFormats?tab=readme-ov-file#installation}.
+\code{load_image()} allows loading subsets of images using \code{imager::load.image()}.
 }

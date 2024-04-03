@@ -1,6 +1,8 @@
 #' Extract pixels from image which fall inbetween lower- and upper bounds.
 #'
 #' @inheritParams .main_args
+#' @param bundle_pixelarray logical, indicating if the input parameter `pixel.array` is to be bundled into the return-value
+#' This is useful to retain `pixel.array` into the output if this function is called in a loop.
 #'
 #' @return EITHER:
 #' list-object with the following elements (when supplying one one pair of bounds)
@@ -19,7 +21,7 @@
 #' @importFrom stringr str_flatten_comma
 #' @importFrom grDevices rgb2hsv
 #'
-extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = FALSE) {
+extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = TRUE, bundle_pixelarray = FALSE) {
     if (is.list(lower_bound) && is.list(upper_bound)) {
         if (length(lower_bound) != length(upper_bound)) {
             stop(
@@ -42,6 +44,9 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
             )
         }
         return_Object <- list()
+        if (as.logical(bundle_pixelarray)) {
+            return_Object$pixel.array <- pixel.array
+        }
         if (as.logical(fast_eval)) {
             for (type in names(lower_bound)) {
                 ret <- list()
@@ -53,6 +58,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
                     upper_bound = upper_bound[[type]],
                     image_width = dim(pixel.array)[1]
                 ) + 1
+
                 ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
                 ret$pixel.idx <- as.matrix(ret$pixel.idx)
                 mode(ret$pixel.idx) <- "integer"
@@ -84,6 +90,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
                 upper_bound = upper_bound[[type]],
                 image_width = dim(pixel.array)[1]
             ) + 1
+            ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
             ret <- as.matrix(ret)
             mode(ret) <- "integer"
             return(ret)

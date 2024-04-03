@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9017</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9021</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,13 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_pixels_HSV</span><span class="op">(</span><span class="va">pixel.array</span>, <span class="va">lower_bound</span>, <span class="va">upper_bound</span>, fast_eval <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_pixels_HSV</span><span class="op">(</span></span>
+<span>  <span class="va">pixel.array</span>,</span>
+<span>  <span class="va">lower_bound</span>,</span>
+<span>  <span class="va">upper_bound</span>,</span>
+<span>  fast_eval <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  bundle_pixelarray <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -72,6 +78,11 @@
 
 <dt>fast_eval</dt>
 <dd><p>Use <code>C++</code>-code where possible to reduce execution time?</p></dd>
+
+
+<dt>bundle_pixelarray</dt>
+<dd><p>logical, indicating if the input parameter <code>pixel.array</code> is to be bundled into the return-value
+This is useful to retain <code>pixel.array</code> into the output if this function is called in a loop.</p></dd>
 
 </dl></div>
     <div class="section level2">

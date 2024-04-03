@@ -84,8 +84,43 @@ get_unique_list_elements <- function(a,b) {
     #
 
 }
+#' takes a cluster-range of integers and reassigns them based on their frequency
+#'
+#' For a input `clus = c(1,1,1,2,2,3,3,3,3)`, returns `clus = c(2,2,2,3,3,1,1,1,1)`.
+#' @param clus vector of integers.
+#'
+#' @return frequency-based reassigned instance of `clus`
+#' @keywords internal
+#'
+#' @examples
+#' \dontrun{
+#' clus <- c(1,1,1,2,2,3,3,3,3)
+#' clus_new <- reassign_integers_by_frequency(clus)
+#' print(clus)
+#' print(clus_new)
+#' }
+reassign_integers_by_frequency <- function(clus) {
+    if (is.null(clus)) {
+        stop(
+            simpleError(
+                "input must not be null"
+            )
+        )
+    }
+    if (isFALSE(is.vector(clus))) {
+        stop(
+            simpleError(
+                "input is not a vector."
+            )
+        )
+    }
+    # sort by descending frequency
+    sorted_clusters <- sort(table(clus), decreasing = TRUE)
 
-
+    # remap the old cluster numbers to new, frequency-sorted ones
+    clus <- match(clus, names(sorted_clusters))
+    return(clus)
+}
 #' add 4D-adjacency-grouping to `pixel.idx`-object
 #'
 #' The function assigns clusters to all coordinate-pairs in `pixel.idx`.
@@ -98,6 +133,9 @@ get_unique_list_elements <- function(a,b) {
 #'
 #' Reference: <https://stackoverflow.com/a/37946855>
 #' @param pixel.idx pixel.idx-object
+#' @param sort_by_frequency
+#' logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
+#' For more info, see documentation on [duflor::reassign_integers_by_frequency()]
 #'
 #' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
 #' @export
@@ -105,9 +143,11 @@ get_unique_list_elements <- function(a,b) {
 #' @importFrom stats dist
 #' @importFrom stats hclust
 #'
-adjacency <- function(pixel.idx) {
+adjacency <- function(pixel.idx,sort_by_frequency = TRUE) {
     #TODO: rename functions to clarify naming conventions
-    cbind(pixel.idx, clus = cutree(hclust(dist(x = pixel.idx, method = "manhattan"), "single"), h = 1))
+    clus <- cutree(hclust(dist(x = pixel.idx, method = "manhattan"), "single"), h = 1)
+    clus <- reassign_integers_by_frequency(clus)
+    return(cbind(pixel.idx, clus = clus))
 }
 
 #' add 8D-adjacency-grouping to `pixel.idx`-object
@@ -122,6 +162,10 @@ adjacency <- function(pixel.idx) {
 #'
 #' Reference: <https://stackoverflow.com/a/37946855>
 #' @inheritParams .main_args
+#' @param sort_by_frequency
+#' logical, control if clusters should be enumerated from 1 > N based on the number of elements in them.
+#' For more info, see documentation on [duflor::reassign_integers_by_frequency()]
+#'
 #'
 #' @return `pixel.idx` with added 3rd column `clus` mapping to a cluster
 #' @export
@@ -129,8 +173,10 @@ adjacency <- function(pixel.idx) {
 #' @importFrom stats dist
 #' @importFrom stats hclust
 #'
-diagonal_adjacency <- function(pixel.idx) {
-    cbind(pixel.idx, clus = cutree(hclust(dist(x = pixel.idx, method = "maximum"), "single"), h = 1))
+diagonal_adjacency <- function(pixel.idx,sort_by_frequency = TRUE) {
+    clus = cutree(hclust(dist(x = pixel.idx, method = "maximum"), "single"), h = 1)
+    clus <- reassign_integers_by_frequency(clus)
+    return(cbind(pixel.idx, clus = clus))
 }
 #' return coordinates by cluster_id from `pixel.idx`
 #'
