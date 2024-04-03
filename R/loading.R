@@ -12,8 +12,6 @@
 #' @importFrom imager load.image
 #'
 load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_left=0, crop_right=0, crop_top=0, crop_bottom=0) {
-    ## if we subset, we use RBioFormats. Thus, we first have to mount a java-VM
-    ## (or confirm one was mounted already)
     if (file.exists(image.path)) {
         if (isTRUE(as.logical(subset_only))) {
             # get image dimensions from loaded object
