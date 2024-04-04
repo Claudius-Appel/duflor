@@ -6,8 +6,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check:
-Master](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
-[![R-CMD-check:
 Dev](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -53,13 +51,6 @@ R-package `devtools`:
 install.packages("devtools")
 ```
 
-### Dependencies
-
-The function \[load_all()\] can optionally load subsets of an image; for
-more information see its documentation. To allow this to work, the
-package [RBioFormats](https://github.com/aoles/RBioFormats) is required.
-Refer to its documentation for installing the package.
-
 ## Usage
 
 For detailed documentation, refer to
@@ -97,4 +88,6 @@ spectrum via `duflor::pixels_to_area(pixel.counts)`, the true area of
 the identifier-dot must be set via this option. The default is set to
 0.503. All areas are assumed to be in \[cm^2\].
 
-## Further
+## Further Documentation
+
+TODO
