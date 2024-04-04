@@ -28,3 +28,5 @@ URL: https://Claudius-Appel.github.io/duflor/
 BugReports: https://github.com/Claudius-Appel/duflor/issues
 LinkingTo: 
     Rcpp
+Depends: 
+    R (>= 2.10)
