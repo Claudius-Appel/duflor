@@ -7,32 +7,34 @@
 convert_pixels_to_area(pixel.counts)
 }
 \arguments{
-\item{pixel.counts}{list containing any of the following pixel-counts:
+\item{pixel.counts}{A list containing any of the following pixel-counts:
 \itemize{
 \item "green"
 \item "drought"
 \item "complete"
 \item "identifier"
-}
-
-The pixel-count for \code{identifier} must be present, whereas the others are optional.
-The calculated area is internally unit-less. However, as the default value for
-\code{duflor.default_identifier_area} is 0.503 [cm^2], the areas computed by this
-function is also in [cm^2].
-
-The assumed area of the identifier can be modified by excuting
-\verb{options(duflor.default_identifier_area = <value_in_square_centimeters>)} \emph{prior} to calling this function}
+}}
 }
 \value{
 list of computed areas for any key listed in \code{pixel.counts}.
 Additionally, two meta-values are returned as well:
 \itemize{
-\item the identifier-area used for calculating each area (whichever value is set in option \code{duflor.default_identifier_area})
+\item the identifier-area used for calculating each area (whichever value is set in option \code{duflor.declared_identifier_area})
 \item the area of a singe pixel
 }
-
-All values are in [cm^2]
 }
 \description{
-convert pixel counts to an area based on the known area of an identifier-dot.
+Convert pixel-counts to area based on declared area of the identifier
+}
+\details{
+The pixel-count for \code{identifier} must be present, whereas the others are optional.
+The calculated area is internally unit-less. However, as the default value for
+\code{duflor.declared_identifier_area} is 0.503 [cm^2], the areas computed by this
+function is also in [cm^2].
+
+The assumed area of the identifier can be modified by excuting
+\verb{options(duflor.declared_identifier_area = <value_in_square_centimeters>)} \emph{prior} to calling this function.
+}
+\note{
+All values are in [cm^2].
 }
