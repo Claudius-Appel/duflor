@@ -24,14 +24,20 @@
 
     #### Configure default spectrum-definitions ####
     spectrums <- list(
-    bex_lower_bound_drought_HSV = c(20, 0.25, 0.20)
-    , bex_upper_bound_drought_HSV = c(69, 1, 0.80)
-    , bex_lower_bound_green_HSV = c(69, 0.25, 0.20)
-    , bex_upper_bound_green_HSV = c(150, 1, 0.80)
-    , bex_lower_bound_complete_HSV = c(20, 0.25, 0.20)
-    , bex_upper_bound_complete_HSV = c(150, 1, 0.80)
-    , bex_lower_bound_identifier_dot = c(270, 0.2, 0.28)
-    , bex_upper_bound_identifier_dot = c(359, 1, 1)
+        lower_bound = list(
+            bex_drought_HSV = c(20, 0.25, 0.20)
+            , bex_green_HSV = c(69, 0.25, 0.20)
+            , bex_complete_HSV = c(20, 0.25, 0.20)
+            , bex_root_HSV = c(26,0.10,0.45) # TODO: validate these HSV ranges for use in rootarea!!
+            , bex_identifier_dot = c(270, 0.2, 0.28)
+        ),
+        upper_bound = list(
+            bex_drought_HSV = c(69, 1, 0.80)
+            , bex_green_HSV = c(150, 1, 0.80)
+            , bex_complete_HSV = c(150, 1, 0.80)
+            , bex_root_HSV = c(52,0.28,0.82) # TODO: validate these HSV ranges for use in rootarea!!
+            , bex_identifier_dot = c(359, 1, 1)
+        )
     )
     options(duflor.default_hsv_spectrums = spectrums)
 
