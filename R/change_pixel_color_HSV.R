@@ -11,9 +11,7 @@ change_pixel_color_HSV <- function(pixel.array, pixel.idx, target.color, mask_ex
 
     if (is.character(target.color)) {
         if (sum(is.element(colors(),target.color))==0) { # color is not part of the available color set from grDevices, thus error out descriptively
-            stop(simpleError(
-                "The provided color '", target.color,"' could not be converted to RGB color-space.\nSee 'grDevices::colors()' for allowed colors."
-            ))
+            stop("The provided color '", target.color,"' could not be converted to RGB color-space.\nSee 'grDevices::colors()' for allowed colors.")
         }
         target.color_ <- as.vector(col2rgb(target.color)) # col in RGB, ranged 0-255
         if (length(target.color_) != 3) {
