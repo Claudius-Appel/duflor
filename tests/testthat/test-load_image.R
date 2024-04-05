@@ -44,3 +44,10 @@ test_that("loaded image is of correct size", {
     cropped_retrieved_dimensional_info <- dim(cropped_object_loaded_from_file)
     testthat::expect_equal(cropped_expected_dimensional_info,cropped_retrieved_dimensional_info)
 })
+test_that("images must be loaded with 3 channels", {
+    test_path_j <- load_extdata("duflor-icon.jpg")
+    test_path_p <- load_extdata("duflor-icon.png")
+    jpg <- load_image(test_path_j)
+    png <- load_image(test_path_p)
+    testthat::expect_equal(dim(jpg),dim(png))
+})
