@@ -60,7 +60,7 @@ test_that("loaded image is of correct size", {
         }
     }
     # test that fullsized image is of expected dimensions
-    test_path <- load_extdata("hs4_cropped.jpg")
+    test_path <- load_extdata("plant_cropped.jpg")
     object_loaded_from_file <- load_image(test_path)
     expected_dimensional_info <- c(1949,3276,1,3)
     retrieved_dimensional_info <- dim(object_loaded_from_file)
