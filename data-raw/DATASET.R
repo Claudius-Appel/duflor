@@ -47,10 +47,10 @@ wfa_test_plant_HSV_matches <- duflor::extract_pixels_HSV(
 )
 #### Save to internal rda file
 usethis::use_data(
-    gfa_test_path,
-    wfa_test_path,
-    gfa_test_plant_cropped,
-    wfa_test_plant_cropped,
+    # gfa_test_path,
+    # wfa_test_path,
+    # gfa_test_plant_cropped,
+    # wfa_test_plant_cropped,
     # gfa_test_plant_HSV_matches,
     # wfa_test_plant_HSV_matches,
     # gfa_test_plant_cropped_HSV_matches,
