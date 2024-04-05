@@ -2,11 +2,13 @@
 #'
 #' @inheritParams .main_args
 #' @return `pixel.array` with hsv-values of pixels at positions `pixel.idx` modified.
+#' @importFrom grDevices col2rgb
+#' @importFrom grDevices rgb2hsv
 #' @export
 #'
 change_pixel_color_HSV <- function(pixel.array, pixel.idx, target.color, mask_extreme) {
     if (is.character(target.color)) {
-        target.color_ <- as.vector(grDevices::col2rgb(target.color)) # col in RGB, ranged 0-255
+        target.color_ <- as.vector(col2rgb(target.color)) # col in RGB, ranged 0-255
         if (length(target.color_) != 3) {
             stop("'target.color_' must be a numeric vector of length 3 with\n             values between 0 and 1 or one of the colors listed by 'colors()'")
         }
