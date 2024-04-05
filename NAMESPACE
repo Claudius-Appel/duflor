@@ -2,6 +2,7 @@
 
 export(HSVtoRGB)
 export(RGBtoHSV)
+export(RGBtosRGB)
 export(adjacency)
 export(change_pixel_color_HSV)
 export(convert_pixels_to_area)

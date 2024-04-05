@@ -37,6 +37,6 @@
 #' )
 #' plot_indicator_image(indicator.array,type)
 #' }
-plot_indicator_image <- function(indicator.array,spectrum_name) {
-    plot_array_as_image_sRGB(HSVtoRGB(indicator.array), main = str_c("indicator for '", spectrum_name, "'"))
+plot_indicator_image <- function(indicator.array,spectrum_name = "") {
+    plot_array_as_image_sRGB(RGBtosRGB(HSVtoRGB(indicator.array)), main = str_c("indicator for '", spectrum_name, "'"))
 }

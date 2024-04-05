@@ -191,5 +191,12 @@ RGBtoHSV <- function(...) imager::RGBtoHSV(...)
 #' @inheritDotParams imager::sRGBtoRGB
 #'
 sRGBtoRGB <- function(...) imager::sRGBtoRGB(...)
+#' mirror of `imager::sRGBtoRGB()`
+#'
+#' See [imager::sRGBtoRGB]
+#' @export
+#' @inheritDotParams imager::RGBtosRGB
+#'
+RGBtosRGB <- function(...) imager::RGBtosRGB(...)
 #'
 #'
