@@ -10,6 +10,7 @@
 #' @importFrom stringr str_c
 #' @importFrom imager as.cimg
 #' @importFrom imager load.image
+#' @importFrom imager rm.alpha
 #'
 load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_left=0, crop_right=0, crop_top=0, crop_bottom=0) {
     if (file.exists(image.path)) {
@@ -60,6 +61,9 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
             }
             # get image dimensions from loaded object
             ig_ret <-load.image(image.path)
+            if (dim(ig_ret)[[4]]>3) {
+                ig_ret <- rm.alpha(ig_ret)
+            }
             xdim <- dim(ig_ret)[1]
             ydim <- dim(ig_ret)[2]
             # determine the offset coordinates in the array
@@ -125,18 +129,22 @@ load_image <- function(image.path, subset_only = FALSE, return_hsv = TRUE, crop_
                 )
             }
         } else {
+            ig_ret <- load.image(image.path)
+            if (dim(ig_ret)[[4]]>3) {
+                ig_ret <- rm.alpha(ig_ret)
+            }
             if (as.logical(return_hsv)) {
                 return(  # no subsetting, HSV
                     RGBtoHSV(
                         sRGBtoRGB(
-                            load.image(image.path)
+                            ig_ret
                         )
                     )
                 )
             } else {
                 return(  # no subsetting, RGB
                     sRGBtoRGB(
-                        load.image(image.path)
+                        ig_ret
                     )
                 )
             }
