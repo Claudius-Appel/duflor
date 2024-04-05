@@ -4,7 +4,7 @@
 \alias{get_indicator_image}
 \title{wrapper around \code{change_pixel_color_HVS()} for the intention of clarity.}
 \usage{
-get_indicator_image(pixel.array, pixel.idx, target.color, mask_extreme)
+get_indicator_image(pixel.array, pixel.idx, target.color, mask_extreme = F)
 }
 \arguments{
 \item{pixel.array}{image array as loaded via duflor::load_image()}
