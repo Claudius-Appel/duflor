@@ -9,7 +9,8 @@ extract_pixels_HSV(
   lower_bound,
   upper_bound,
   fast_eval = TRUE,
-  bundle_pixelarray = FALSE
+  bundle_pixelarray = FALSE,
+  check_value = FALSE
 )
 }
 \arguments{

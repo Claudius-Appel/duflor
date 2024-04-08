@@ -21,7 +21,7 @@
 #' @importFrom stringr str_flatten_comma
 #' @importFrom grDevices rgb2hsv
 #'
-extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = TRUE, bundle_pixelarray = FALSE) {
+extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = TRUE, bundle_pixelarray = FALSE,check_value = FALSE) {
     if (is.list(lower_bound) && is.list(upper_bound)) {
         if (length(lower_bound) != length(upper_bound)) {
             stop(
@@ -56,7 +56,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
                     V = pixel.array[,,,3],
                     lower_bound = lower_bound[[type]],
                     upper_bound = upper_bound[[type]],
-                    image_width = dim(pixel.array)[1]
+                    image_width = dim(pixel.array)[1],check_V = as.logical(check_value)
                 ) + 1
 
                 ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
