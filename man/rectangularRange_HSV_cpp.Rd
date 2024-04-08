@@ -4,7 +4,15 @@
 \alias{rectangularRange_HSV_cpp}
 \title{'C++'-implementation of \code{\link[=rectangularRange_HSV]{rectangularRange_HSV()}}}
 \usage{
-rectangularRange_HSV_cpp(H, S, V, upper_bound, lower_bound, image_width)
+rectangularRange_HSV_cpp(
+  H,
+  S,
+  V,
+  upper_bound,
+  lower_bound,
+  image_width,
+  check_V
+)
 }
 \arguments{
 \item{H}{respective component of a \code{pixel.array}}
@@ -22,6 +30,8 @@ rectangularRange_HSV_cpp(H, S, V, upper_bound, lower_bound, image_width)
 \item{lower_bound}{see \code{upper_bound}}
 
 \item{image_width}{Width of \code{pixel.array}, as returned via \code{dim(pixel.array)[1]}}
+
+\item{check_V}{boolean toggle to also check the \code{VALUE}-component of an HSV-pixel}
 }
 \value{
 A list-object with the following elements (when supplying one one pair of bounds)

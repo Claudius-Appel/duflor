@@ -24,6 +24,7 @@ using namespace Rcpp;
 //' @param S respective component of a `pixel.array`
 //' @param V respective component of a `pixel.array`
 //' @param image_width Width of `pixel.array`, as returned via `dim(pixel.array)[1]`
+//' @param check_V boolean toggle to also check the `VALUE`-component of an HSV-pixel
 //' @return A list-object with the following elements (when supplying one one pair of bounds)
 //' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
 //'
@@ -35,17 +36,31 @@ DataFrame rectangularRange_HSV_cpp(NumericVector H,
                                    NumericVector V,
                                    std::vector<double> upper_bound,
                                    std::vector<double> lower_bound,
-                                   int image_width) {
+                                   int image_width,
+                                   bool check_V) {
     int repetitions = H.size();
     std::vector<int> row_indices;
     std::vector<int> col_indices;
-    for (int i = 0; i < repetitions; i++) {
-        if ((lower_bound[0] <= H[i]) && (H[i] <= upper_bound[0])
-                && (lower_bound[1] <= S[i]) && (S[i] <= upper_bound[1])) {
-            int row = i % image_width;
-            int col = i / image_width;
-            row_indices.push_back(row);
-            col_indices.push_back(col);
+    if (check_V) {
+        for (int i = 0; i < repetitions; i++) {
+            if ((lower_bound[0] <= H[i]) && (H[i] <= upper_bound[0])
+                    && (lower_bound[1] <= S[i]) && (S[i] <= upper_bound[1])
+                    && (lower_bound[2] <= V[i]) && (V[i] <= upper_bound[2])) {
+                int row = i % image_width;
+                int col = i / image_width;
+                row_indices.push_back(row);
+                col_indices.push_back(col);
+            }
+        }
+    } else {
+        for (int i = 0; i < repetitions; i++) {
+            if ((lower_bound[0] <= H[i]) && (H[i] <= upper_bound[0])
+                    && (lower_bound[1] <= S[i]) && (S[i] <= upper_bound[1])) {
+                int row = i % image_width;
+                int col = i / image_width;
+                row_indices.push_back(row);
+                col_indices.push_back(col);
+            }
         }
     }
     return DataFrame::create(_["x"] = row_indices,
