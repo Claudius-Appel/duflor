@@ -17,6 +17,7 @@ reference:
       - '`RGBtoHSV`'
       - '`sRGBtoRGB`'
       - '`HSVtoRGB`'
+      - '`RGBtosRGB`'
   - title: Evaluation
     desc: analysing results
     contents:

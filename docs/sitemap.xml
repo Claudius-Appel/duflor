@@ -91,10 +91,16 @@
     <loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV_cpp.html</loc>
   </url>
   <url>
+    <loc>https://Claudius-Appel.github.io/duflor/reference/remove_key_from_list.html</loc>
+  </url>
+  <url>
     <loc>https://Claudius-Appel.github.io/duflor/reference/retrieve_adjacency_coords.html</loc>
   </url>
   <url>
     <loc>https://Claudius-Appel.github.io/duflor/reference/RGBtoHSV.html</loc>
+  </url>
+  <url>
+    <loc>https://Claudius-Appel.github.io/duflor/reference/RGBtosRGB.html</loc>
   </url>
   <url>
     <loc>https://Claudius-Appel.github.io/duflor/reference/sRGBtoRGB.html</loc>

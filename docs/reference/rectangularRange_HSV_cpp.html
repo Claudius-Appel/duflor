@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9021</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9023</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,15 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rectangularRange_HSV_cpp</span><span class="op">(</span><span class="va">H</span>, <span class="va">S</span>, <span class="va">V</span>, <span class="va">upper_bound</span>, <span class="va">lower_bound</span>, <span class="va">image_width</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rectangularRange_HSV_cpp</span><span class="op">(</span></span>
+<span>  <span class="va">H</span>,</span>
+<span>  <span class="va">S</span>,</span>
+<span>  <span class="va">V</span>,</span>
+<span>  <span class="va">upper_bound</span>,</span>
+<span>  <span class="va">lower_bound</span>,</span>
+<span>  <span class="va">image_width</span>,</span>
+<span>  <span class="va">check_V</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -80,6 +88,10 @@
 
 <dt>image_width</dt>
 <dd><p>Width of <code>pixel.array</code>, as returned via <code>dim(pixel.array)[1]</code></p></dd>
+
+
+<dt>check_V</dt>
+<dd><p>boolean toggle to also check the <code>VALUE</code>-component of an HSV-pixel</p></dd>
 
 </dl></div>
     <div class="section level2">
