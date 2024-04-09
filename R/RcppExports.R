@@ -22,24 +22,3 @@ rectangularRange_HSV_cpp <- function(H, S, V, upper_bound, lower_bound, image_wi
     .Call(`_duflor_rectangularRange_HSV_cpp`, H, S, V, upper_bound, lower_bound, image_width, check_V)
 }
 
-#' @title 'C++'-implementation of [rectangularRange_HSV()]
-#'
-#' @note
-#' The use of  [rectangularRange_HSV()] is strongly discouraged in favour of this function,
-#' due to its drastically slower execution.
-#' Unlike [rectangularRange_HSV_cpp], this function will threshold on the Value-parameter as well.
-#'
-#' @inheritParams .main_args
-#' @param H respective component of a `pixel.array`
-#' @param S respective component of a `pixel.array`
-#' @param V respective component of a `pixel.array`
-#' @param image_width Width of `pixel.array`, as returned via `dim(pixel.array)[1]`
-#' @return A list-object with the following elements (when supplying one one pair of bounds)
-#' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
-#'
-#' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned.
-#' @export
-rectangularRange_HSV_cpp2 <- function(H, S, V, upper_bound, lower_bound, image_width) {
-    .Call(`_duflor_rectangularRange_HSV_cpp2`, H, S, V, upper_bound, lower_bound, image_width)
-}
-

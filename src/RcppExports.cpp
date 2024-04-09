@@ -27,26 +27,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rectangularRange_HSV_cpp2
-DataFrame rectangularRange_HSV_cpp2(NumericVector H, NumericVector S, NumericVector V, std::vector<double> upper_bound, std::vector<double> lower_bound, int image_width);
-RcppExport SEXP _duflor_rectangularRange_HSV_cpp2(SEXP HSEXP, SEXP SSEXP, SEXP VSEXP, SEXP upper_boundSEXP, SEXP lower_boundSEXP, SEXP image_widthSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type H(HSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type S(SSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type V(VSEXP);
-    Rcpp::traits::input_parameter< std::vector<double> >::type upper_bound(upper_boundSEXP);
-    Rcpp::traits::input_parameter< std::vector<double> >::type lower_bound(lower_boundSEXP);
-    Rcpp::traits::input_parameter< int >::type image_width(image_widthSEXP);
-    rcpp_result_gen = Rcpp::wrap(rectangularRange_HSV_cpp2(H, S, V, upper_bound, lower_bound, image_width));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_duflor_rectangularRange_HSV_cpp", (DL_FUNC) &_duflor_rectangularRange_HSV_cpp, 7},
-    {"_duflor_rectangularRange_HSV_cpp2", (DL_FUNC) &_duflor_rectangularRange_HSV_cpp2, 6},
     {NULL, NULL, 0}
 };
 
