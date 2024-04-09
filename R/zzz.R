@@ -28,14 +28,14 @@
             bex_drought_HSV = c(20, 0.25, 0.20)
             , bex_green_HSV = c(69, 0.25, 0.20)
             , bex_complete_HSV = c(20, 0.25, 0.20)
-            , bex_root_HSV = c(26,0.10,0.45) # TODO: validate these HSV ranges for use in rootarea!!
+            , bex_root_HSV = c(21.80, 0.30, 0.0099)
             , bex_identifier_dot = c(270, 0.2, 0.28)
         ),
         upper_bound = list(
             bex_drought_HSV = c(69, 1, 0.80)
             , bex_green_HSV = c(150, 1, 0.80)
             , bex_complete_HSV = c(150, 1, 0.80)
-            , bex_root_HSV = c(52,0.28,0.82) # TODO: validate these HSV ranges for use in rootarea!!
+            , bex_root_HSV = c(52, 0.8, 0.9)
             , bex_identifier_dot = c(359, 1, 1)
         )
     )
