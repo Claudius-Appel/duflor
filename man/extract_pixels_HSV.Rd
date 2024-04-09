@@ -28,6 +28,8 @@ extract_pixels_HSV(
 
 \item{bundle_pixelarray}{logical, indicating if the input parameter \code{pixel.array} is to be bundled into the return-value
 This is useful to retain \code{pixel.array} into the output if this function is called in a loop.}
+
+\item{check_value}{boolean toggle to also check the \code{VALUE}-component of an HSV-pixel}
 }
 \value{
 EITHER:

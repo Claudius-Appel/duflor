@@ -3,6 +3,7 @@
 #' @inheritParams .main_args
 #' @param bundle_pixelarray logical, indicating if the input parameter `pixel.array` is to be bundled into the return-value
 #' This is useful to retain `pixel.array` into the output if this function is called in a loop.
+#' @param check_value boolean toggle to also check the `VALUE`-component of an HSV-pixel
 #'
 #' @return EITHER:
 #' list-object with the following elements (when supplying one one pair of bounds)
