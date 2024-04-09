@@ -17,6 +17,7 @@ reference:
       - '`RGBtoHSV`'
       - '`sRGBtoRGB`'
       - '`HSVtoRGB`'
+      - '`RGBtosRGB`'
   - title: Evaluation
     desc: analysing results
     contents:
@@ -38,6 +39,7 @@ reference:
       - '`norm_to_range_01`'
       - '`get_unique_list_elements`'
       - '`reassign_integers_by_frequency`'
+      - '`remove_key_from_list`'
       - '`objs`'
       - '`.main_args`'
   - title: Loading and Attaching

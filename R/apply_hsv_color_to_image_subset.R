@@ -17,6 +17,6 @@ apply_hsv_color_to_image_subset <- function(pixel.array,pixel.idx,target.color.h
             pa_t[pixel.idx[i, "x"], pixel.idx[i, "y"],1,3] <- target.color.hsv[3]
         }
     }
-    pixel.array <- imager::as.cimg(pa_t)
+    pixel.array <- as.cimg(pa_t)
     return(pixel.array)
 }

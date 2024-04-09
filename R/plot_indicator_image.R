@@ -8,6 +8,7 @@
 #'
 #' @return /
 #' @export
+#' @importFrom stringr str_c
 #'
 #' @examples
 #' \dontrun{

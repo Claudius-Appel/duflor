@@ -3,6 +3,7 @@
 #' @inheritParams .main_args
 #' @param bundle_pixelarray logical, indicating if the input parameter `pixel.array` is to be bundled into the return-value
 #' This is useful to retain `pixel.array` into the output if this function is called in a loop.
+#' @param check_value boolean toggle to also check the `VALUE`-component of an HSV-pixel
 #'
 #' @return EITHER:
 #' list-object with the following elements (when supplying one one pair of bounds)
@@ -20,8 +21,9 @@
 #' @export
 #' @importFrom stringr str_flatten_comma
 #' @importFrom grDevices rgb2hsv
+#' @importFrom stringr str_c
 #'
-extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = TRUE, bundle_pixelarray = FALSE) {
+extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = TRUE, bundle_pixelarray = FALSE,check_value = FALSE) {
     if (is.list(lower_bound) && is.list(upper_bound)) {
         if (length(lower_bound) != length(upper_bound)) {
             stop(
@@ -56,7 +58,7 @@ extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval 
                     V = pixel.array[,,,3],
                     lower_bound = lower_bound[[type]],
                     upper_bound = upper_bound[[type]],
-                    image_width = dim(pixel.array)[1]
+                    image_width = dim(pixel.array)[1],check_V = as.logical(check_value)
                 ) + 1
 
                 ## the '+1' is required to handle Cpp being 0-indexed, while R is 1-indexed.
