@@ -21,6 +21,7 @@
 #' @export
 #' @importFrom stringr str_flatten_comma
 #' @importFrom grDevices rgb2hsv
+#' @importFrom stringr str_c
 #'
 extract_pixels_HSV <- function(pixel.array, lower_bound, upper_bound, fast_eval = TRUE, bundle_pixelarray = FALSE,check_value = FALSE) {
     if (is.list(lower_bound) && is.list(upper_bound)) {
