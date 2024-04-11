@@ -11,7 +11,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // rectangularRange_HSV_cpp
-DataFrame rectangularRange_HSV_cpp(NumericVector H, NumericVector S, NumericVector V, std::vector<double> upper_bound, std::vector<double> lower_bound, int image_width, bool check_V);
+DataFrame rectangularRange_HSV_cpp(NumericVector H, NumericVector S, NumericVector V, Nullable<NumericVector> upper_bound, Nullable<NumericVector> lower_bound, int image_width, bool check_V);
 RcppExport SEXP _duflor_rectangularRange_HSV_cpp(SEXP HSEXP, SEXP SSEXP, SEXP VSEXP, SEXP upper_boundSEXP, SEXP lower_boundSEXP, SEXP image_widthSEXP, SEXP check_VSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -19,17 +19,35 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type H(HSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type S(SSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type V(VSEXP);
-    Rcpp::traits::input_parameter< std::vector<double> >::type upper_bound(upper_boundSEXP);
-    Rcpp::traits::input_parameter< std::vector<double> >::type lower_bound(lower_boundSEXP);
+    Rcpp::traits::input_parameter< Nullable<NumericVector> >::type upper_bound(upper_boundSEXP);
+    Rcpp::traits::input_parameter< Nullable<NumericVector> >::type lower_bound(lower_boundSEXP);
     Rcpp::traits::input_parameter< int >::type image_width(image_widthSEXP);
     Rcpp::traits::input_parameter< bool >::type check_V(check_VSEXP);
     rcpp_result_gen = Rcpp::wrap(rectangularRange_HSV_cpp(H, S, V, upper_bound, lower_bound, image_width, check_V));
     return rcpp_result_gen;
 END_RCPP
 }
+// rectangularRange_HSV_iteronce_cpp
+List rectangularRange_HSV_iteronce_cpp(NumericVector H, NumericVector S, NumericVector V, Nullable<NumericMatrix> upper_bound, Nullable<NumericMatrix> lower_bound, int image_width, bool check_V);
+RcppExport SEXP _duflor_rectangularRange_HSV_iteronce_cpp(SEXP HSEXP, SEXP SSEXP, SEXP VSEXP, SEXP upper_boundSEXP, SEXP lower_boundSEXP, SEXP image_widthSEXP, SEXP check_VSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type H(HSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type S(SSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type V(VSEXP);
+    Rcpp::traits::input_parameter< Nullable<NumericMatrix> >::type upper_bound(upper_boundSEXP);
+    Rcpp::traits::input_parameter< Nullable<NumericMatrix> >::type lower_bound(lower_boundSEXP);
+    Rcpp::traits::input_parameter< int >::type image_width(image_widthSEXP);
+    Rcpp::traits::input_parameter< bool >::type check_V(check_VSEXP);
+    rcpp_result_gen = Rcpp::wrap(rectangularRange_HSV_iteronce_cpp(H, S, V, upper_bound, lower_bound, image_width, check_V));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_duflor_rectangularRange_HSV_cpp", (DL_FUNC) &_duflor_rectangularRange_HSV_cpp, 7},
+    {"_duflor_rectangularRange_HSV_iteronce_cpp", (DL_FUNC) &_duflor_rectangularRange_HSV_iteronce_cpp, 7},
     {NULL, NULL, 0}
 };
 

@@ -7,6 +7,8 @@
 #' The use of  [rectangularRange_HSV()] is strongly discouraged in favour of this function,
 #' due to its drastically slower execution.
 #'
+#' @seealso [rectangularRange_HSV_iteronce_cpp()]
+#'
 #' @inheritParams .main_args
 #' @param H respective component of a `pixel.array`
 #' @param S respective component of a `pixel.array`
@@ -17,8 +19,60 @@
 #' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
 #'
 #' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned.
+#'
+#'
 #' @export
 rectangularRange_HSV_cpp <- function(H, S, V, upper_bound, lower_bound, image_width, check_V) {
     .Call(`_duflor_rectangularRange_HSV_cpp`, H, S, V, upper_bound, lower_bound, image_width, check_V)
+}
+
+#' @title optimised 'C++'-implementation of [rectangularRange_HSV()]
+#'
+#' @note
+#' The use of  [rectangularRange_HSV()] & [rectangularRange_HSV_cpp()] is strongly discouraged in favour of this function,
+#' due to its drastically slower execution.
+#'
+#' @param H respective component of a `pixel.array`
+#' @param S respective component of a `pixel.array`
+#' @param V respective component of a `pixel.array`
+#' @param image_width Width of `pixel.array`, as returned via `dim(pixel.array)[1]`
+#' @param check_V boolean toggle to also check the `VALUE`-component of an HSV-pixel
+#' @param upper_bound EITHER:
+#' - **matrix** of upper HSV-bounds, e.g. `do.call(rbind,list(green = c(H_green_lower,S_green_lower,V_green_lower),drought = c(H_drought_lower,S_drought_lower,V_drought_lower)))`
+#' - single vector of length 3 declaring a set of HSV-values
+#' @param lower_bound see `upper_bound`
+#' @return A list-object with the following elements (when supplying one one pair of bounds)
+#' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
+#'
+#' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned.
+#' @examples
+#' \dontrun{
+#' library(duflor)
+#' ## load example data
+#' file_path <- load_extdata("duflor-icon.png")
+#' pixel.array <- load_image(file_path,F,T)
+#' spectrums <- getOption("duflor.default_hsv_spectrums")
+#'
+#' ## convert spectrums to matrix
+#' nlb <- do.call(rbind,spectrums$lower_bound)
+#' nub <- do.call(rbind,spectrums$upper_bound)
+#'
+#' ## strip dimnames-attributes
+#' dimnames(nlb) <- c()
+#' dimnames(nub) <- c()
+#' ## extract matches
+#' result <- rectangularRange_HSV_iteronce_cpp(H = pixel.array[,,,1],
+#'                                             S = pixel.array[,,,2],
+#'                                             V = pixel.array[,,,3],
+#'                                             upper_bound = nub,
+#'                                             lower_bound = nlb,
+#'                                             image_width = dim(pixel.array)[1],
+#'                                             check_V = T)
+#' ## add names to results-matrix.
+#' names(result) <- names(spectrums$lower_bound)
+#' }
+#' @export
+rectangularRange_HSV_iteronce_cpp <- function(H, S, V, upper_bound, lower_bound, image_width, check_V) {
+    .Call(`_duflor_rectangularRange_HSV_iteronce_cpp`, H, S, V, upper_bound, lower_bound, image_width, check_V)
 }
 
