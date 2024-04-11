@@ -33,8 +33,6 @@ rectangularRange_HSV <- function(pixel.array, upper_bound, lower_bound, check_V 
     # pixel.array[X,Y,1,[H]]
     # pixel.array[X,Y,1,[S]]
     # pixel.array[X,Y,1,[V]]
-    # j <- (lower_bound[1] <= pixel.array[, , 1, 1] & pixel.array[, , 1, 1] <= upper_bound[1])
-    # k <- (lower_bound[2] <= pixel.array[, , 1, 2] & pixel.array[, , 1, 2] <= upper_bound[2])
     if (as.logical(check_V)) {
         idx <- which((lower_bound[1] <= pixel.array[, , 1, 1] & pixel.array[, , 1, 1] <= upper_bound[1])
                      & (lower_bound[2] <= pixel.array[, , 1, 2] & pixel.array[, , 1, 2] <= upper_bound[2])
@@ -44,11 +42,9 @@ rectangularRange_HSV <- function(pixel.array, upper_bound, lower_bound, check_V 
     } else {
         idx <- which((lower_bound[1] <= pixel.array[, , 1, 1] & pixel.array[, , 1, 1] <= upper_bound[1])
                      & (lower_bound[2] <= pixel.array[, , 1, 2] & pixel.array[, , 1, 2] <= upper_bound[2])
-                     # & (lower_bound[3] <= pixel.array[, , 1, 3] & pixel.array[, , 1, 3] <= upper_bound[3])
                      ,arr.ind = TRUE
                      )
     }
-
     dimnames(idx)[[2]] <- c("x","y")
     return(idx)
 }

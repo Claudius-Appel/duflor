@@ -29,3 +29,19 @@ test_that("empty boundaries return empty arraay", {
     dimnames(expected)[[2]] <- list("x","y")
     expect_equal(object, expected)
 })
+# test_that("check_V", {
+#   expect_equal(2 * 2, 4)
+#   Figure out how to test this parameter even
+# })
+
+
+#' TO BE DONE FOR ALL RECTRANGE-FUNCTIONS.
+#' CURRENTLY, THEY ARE ALL ONLY TESTED
+#' IMPLICITLY VIA THE `EXTRACT_PIXELS_HSV`-TESTS
+#'
+#'
+# don't like that
+#' stuff to test:
+#' - missing args
+#' - bounds are not of correct dimensions
+#' - check_V
