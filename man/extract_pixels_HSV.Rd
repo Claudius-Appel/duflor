@@ -10,7 +10,8 @@ extract_pixels_HSV(
   upper_bound,
   fast_eval = TRUE,
   bundle_pixelarray = FALSE,
-  check_value = FALSE
+  check_value = FALSE,
+  use_single_iteration_cpp = FALSE
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ extract_pixels_HSV(
 This is useful to retain \code{pixel.array} into the output if this function is called in a loop.}
 
 \item{check_value}{boolean toggle to also check the \code{VALUE}-component of an HSV-pixel}
+
+\item{use_single_iteration_cpp}{Use \code{\link[=rectangularRange_HSV_iteronce_cpp]{rectangularRange_HSV_iteronce_cpp()}} for computing hits per range. This is slightly more efficient than using \code{\link[=rectangularRange_HSV_cpp]{rectangularRange_HSV_cpp()}}.}
 }
 \value{
 EITHER:
