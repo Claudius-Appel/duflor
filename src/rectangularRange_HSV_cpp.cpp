@@ -67,6 +67,8 @@ DataFrame rectangularRange_HSV_cpp(NumericVector H,
             if ((lower_bound_[0] <= H[i]) && (H[i] <= upper_bound_[0])
                     && (lower_bound_[1] <= S[i]) && (S[i] <= upper_bound_[1])
                     && (lower_bound_[2] <= V[i]) && (V[i] <= upper_bound_[2])) {
+                int row = i % image_width + 1;
+                int col = i / image_width + 1;
                 row_indices.push_back(row);
                 col_indices.push_back(col);
             }
@@ -81,6 +83,8 @@ DataFrame rectangularRange_HSV_cpp(NumericVector H,
         for (int i = 0; i < repetitions; i++) {
             if ((lower_bound_[0] <= H[i]) && (H[i] <= upper_bound_[0])
                     && (lower_bound_[1] <= S[i]) && (S[i] <= upper_bound_[1])) {
+                int row = i % image_width + 1;
+                int col = i / image_width + 1;
                 row_indices.push_back(row);
                 col_indices.push_back(col);
             }
