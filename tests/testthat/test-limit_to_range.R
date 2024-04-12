@@ -1,0 +1,21 @@
+test_that("values outside provided bounds are replaced by those bounds", {
+    vector <- c(-1000,100,300)
+    vector_exp <- c(0,100,255)
+    expect_equal(limit_to_range(x = vector,replace_lower = 0,replace_upper = 255),vector_exp)
+    vector_exp <- c(0,100,255)
+    vector <- c(0,100,300)
+    expect_equal(limit_to_range(x = vector,replace_lower = 0,replace_upper = 255),vector_exp)
+})
+test_that("values not outside provided bounds are not changed", {
+    vector <- c(0,100,255)
+    expect_equal(limit_to_range(x = vector,replace_lower = 0,replace_upper = 255),vector)
+})
+test_that("non-numeric inputs error", {
+    vector <- c(0,100,255)
+    expect_error(limit_to_range(x = vector,replace_lower = c("1","A",NULL),replace_upper = 255))
+    expect_error(limit_to_range(x = vector,replace_lower = c(NULL),replace_upper = 255))
+    expect_error(limit_to_range(x = vector,replace_lower = c(NA),replace_upper = 255))
+    expect_error(limit_to_range(x = vector,replace_lower = 255,replace_upper = c("1","A",NULL)))
+    expect_error(limit_to_range(x = vector,replace_lower = 255,replace_upper = c(NULL)))
+    expect_error(limit_to_range(x = vector,replace_lower = 255,replace_upper = c(NA)))
+})
