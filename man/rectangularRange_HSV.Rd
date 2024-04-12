@@ -4,7 +4,7 @@
 \alias{rectangularRange_HSV}
 \title{find pixels with color-values lying between upper_bound and lower_bound}
 \usage{
-rectangularRange_HSV(pixel.array, upper_bound, lower_bound)
+rectangularRange_HSV(pixel.array, upper_bound, lower_bound, check_V = FALSE)
 }
 \arguments{
 \item{pixel.array}{image array as loaded via duflor::load_image()}
@@ -16,6 +16,8 @@ rectangularRange_HSV(pixel.array, upper_bound, lower_bound)
 }}
 
 \item{lower_bound}{see \code{upper_bound}}
+
+\item{check_V}{boolean toggle to also check the \code{VALUE}-component of an HSV-pixel}
 }
 \value{
 upon success, returns a list-object with the following elements:

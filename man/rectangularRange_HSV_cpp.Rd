@@ -48,3 +48,6 @@ Upon failure to find any matching pixels, an empty matrix of dimensions \verb{[0
 The use of  \code{\link[=rectangularRange_HSV]{rectangularRange_HSV()}} is strongly discouraged in favour of this function,
 due to its drastically slower execution.
 }
+\seealso{
+\code{\link[=rectangularRange_HSV_iteronce_cpp]{rectangularRange_HSV_iteronce_cpp()}}
+}
