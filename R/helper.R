@@ -114,6 +114,13 @@ reassign_integers_by_frequency <- function(clus) {
             )
         )
     }
+    if (isTRUE(is.list(clus))) {
+        stop(
+            simpleError(
+                "Input must be a vector, not a list."
+            )
+        )
+    }
     # sort by descending frequency
     sorted_clusters <- sort(table(clus), decreasing = TRUE)
 
