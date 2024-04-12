@@ -22,5 +22,6 @@ less favorable images.)}
 \code{pixel.array} with hsv-values of pixels at positions \code{pixel.idx} modified.
 }
 \description{
-handles color-translation from character-name to hsv and returns results of \code{duflor::apply_hsv_color_to_image_subset()}
+Values for \code{target.color} which lie outside the RGB-range of \verb{[0-255,0-255,0-255]} will be
+constricted to limits of the range \verb{[0,255]}
 }

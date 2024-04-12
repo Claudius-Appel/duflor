@@ -1,5 +1,7 @@
 #' handles color-translation from character-name to hsv and returns results of `duflor::apply_hsv_color_to_image_subset()`
 #'
+#' Values for `target.color` which lie outside the RGB-range of `[0-255,0-255,0-255]` will be
+#' constricted to limits of the range `[0,255]`
 #' @inheritParams .main_args
 #' @return `pixel.array` with hsv-values of pixels at positions `pixel.idx` modified.
 #' @importFrom grDevices col2rgb
@@ -27,8 +29,9 @@ change_pixel_color_HSV <- function(pixel.array, pixel.idx, target.color, mask_ex
         if (length(target.color) != 3) {
             stop("'target.color' must be a numeric vector of length 3 with\n             RGB-values between 0 and 255 or one of the colors listed by 'colors()'")
         }
-        if (range(target.color)[2] > 255) {
-            target.color <- target.color/255
+        if (any(range(target.color) > 255)) {
+            target.color <- limit_to_range(target.color,replace_lower = 0,replace_upper = 255)
+            warning("Elements of 'target.color' not in range [0,255] were normalised to [0,255], without scaling non-infringing values accordingly.")
         }
         target.color.hsv <- rgb2hsv(target.color[1], target.color[2], target.color[3])
     }
