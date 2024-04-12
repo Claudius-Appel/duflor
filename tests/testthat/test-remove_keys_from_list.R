@@ -16,3 +16,19 @@ test_that("keys are case-sensitive", {
     # return-value being equal to the input value
     expect_equal(suppressWarnings(remove_key_from_list(l,c("A"))),expected = l)
 })
+test_that("non-list inputs are returned as-is", {
+    matrix <- matrix(1:9, nrow = 3, ncol = 3)
+    vector <- vector(mode = "logical", length = 0)
+    L3 <- LETTERS[1:3]
+    df <- data.frame(1, 1:10, sample(L3, 10, replace = TRUE))
+    expect_equal(suppressWarnings(remove_key_from_list(matrix,"A")),matrix)
+    expect_equal(suppressWarnings(remove_key_from_list(vector,"A")),vector)
+})
+test_that("list inputs are returned with supplied keys missing",{
+    L3 <- LETTERS[1:3]
+    df <- data.frame(1, 1:10, sample(L3, 10, replace = TRUE))
+    df2 <- data.frame(1, 1:10, sample(L3, 10, replace = TRUE))
+    df2 <- df2[1:2]
+    expect_equal(remove_key_from_list(df,"sample.L3..10..replace...TRUE."),df2)
+})
+
