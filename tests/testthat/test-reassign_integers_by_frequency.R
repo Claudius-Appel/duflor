@@ -6,3 +6,6 @@ test_that("reassign_integers_by_frequency fails on NULL input", {
     expect_error(reassign_integers_by_frequency(NULL))
     expect_error(reassign_integers_by_frequency(c()))
 })
+test_that("fails on input-type 'list()'",{
+    expect_error(reassign_integers_by_frequency(list(a = 2, b = 3)))
+})

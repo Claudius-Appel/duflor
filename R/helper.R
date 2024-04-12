@@ -7,6 +7,14 @@
 #' @return vector, normalised to range `0-1`
 #' @keywords internal
 #'
+#' @seealso [limit_to_range()]
+#'
+#' @examples
+#' x <- runif(n = 50, min = 1, max = 10)
+#' max(duflor:::norm_to_range_01(x))
+#' min(duflor:::norm_to_range_01(x))
+#'
+#'
 norm_to_range_01 <- function(x){(x-min(x))/(max(x)-min(x))}
 
 #' replace values outside of boundaries with respective  boundary
@@ -159,6 +167,13 @@ reassign_integers_by_frequency <- function(clus) {
             )
         )
     }
+    if (isTRUE(is.list(clus))) {
+        stop(
+            simpleError(
+                "Input must be a vector, not a list."
+            )
+        )
+    }
     # sort by descending frequency
     sorted_clusters <- sort(table(clus), decreasing = TRUE)
 
@@ -168,13 +183,27 @@ reassign_integers_by_frequency <- function(clus) {
 }
 #' wrapper around `object.size()`
 #'
-#' @param x object to retrive memory size of
+#' @param x object to measure
 #'
-#' @return size of `x` in GB
+#' @return size of `x` in GB, as numeric
 #' @keywords internal
 #'
 #' @examples duflor:::objs(1:1:500000)
 #' @importFrom utils object.size
 objs <- function(x) {
-    cat(as.numeric(object.size(x)*1e-9 + 0),"GB")
+    if (any(is.null(x))) {
+        stop(
+            simpleError(
+                "input must not be NULL"
+            )
+        )
+    }
+    if (any(is.na(x))) {
+        stop(
+            simpleError(
+                "input must not be NA"
+            )
+        )
+    }
+    return(as.numeric(object.size(x)*1e-9 + 0))
 }

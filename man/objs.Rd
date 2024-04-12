@@ -7,10 +7,10 @@
 objs(x)
 }
 \arguments{
-\item{x}{object to retrive memory size of}
+\item{x}{object to measure}
 }
 \value{
-size of \code{x} in GB
+size of \code{x} in GB, as numeric
 }
 \description{
 wrapper around \code{object.size()}
