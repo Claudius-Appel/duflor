@@ -123,13 +123,27 @@ reassign_integers_by_frequency <- function(clus) {
 }
 #' wrapper around `object.size()`
 #'
-#' @param x object to retrive memory size of
+#' @param x object to measure
 #'
-#' @return size of `x` in GB
+#' @return size of `x` in GB, as numeric
 #' @keywords internal
 #'
 #' @examples duflor:::objs(1:1:500000)
 #' @importFrom utils object.size
 objs <- function(x) {
-    cat(as.numeric(object.size(x)*1e-9 + 0),"GB")
+    if (any(is.null(x))) {
+        stop(
+            simpleError(
+                "input must not be NULL"
+            )
+        )
+    }
+    if (any(is.na(x))) {
+        stop(
+            simpleError(
+                "input must not be NA"
+            )
+        )
+    }
+    return(as.numeric(object.size(x)*1e-9 + 0))
 }
