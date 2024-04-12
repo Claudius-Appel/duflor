@@ -32,10 +32,10 @@ plot_array_as_image_sRGB <- function(rgb.array, main = "title") {
     } else if (dim(rgb.array)[3] != 3) {
         warning("Provided array has more than 3 channels; using only the\n                first 3 as R, G, and B channels")
     }
-    op <- graphics::par(mar = c(0, 0, 0, 0))
+    op <- par(mar = c(0, 0, 0, 0))
     asp <- dim(rgb.array)[1] / dim(rgb.array)[2]
-    graphics::plot(0:10, 0:10, type = "n", ann = F, axes = T, asp = asp)
-    graphics::rasterImage(rgb.array, xleft = 0, ybottom = 0, xright = 10, ytop = 10)
-    graphics::title(sub = main, line = 0)
-    graphics::par(op)
+    plot(0:10, 0:10, type = "n", ann = F, axes = T, asp = asp)
+    rasterImage(rgb.array, xleft = 0, ybottom = 0, xright = 10, ytop = 10)
+    title(sub = main, line = 0)
+    par(op)
 }

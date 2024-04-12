@@ -12,12 +12,13 @@
 #' @param S respective component of a `pixel.array`
 #' @param V respective component of a `pixel.array`
 #' @param image_width Width of `pixel.array`, as returned via `dim(pixel.array)[1]`
+#' @param check_V boolean toggle to also check the `VALUE`-component of an HSV-pixel
 #' @return A list-object with the following elements (when supplying one one pair of bounds)
 #' - `pixel.idx` - pixel-locations of pixels detected between lower and upper bound.
 #'
 #' Upon failure to find any matching pixels, an empty matrix of dimensions `[0, 1:2]` is returned.
 #' @export
-rectangularRange_HSV_cpp <- function(H, S, V, upper_bound, lower_bound, image_width) {
-    .Call(`_duflor_rectangularRange_HSV_cpp`, H, S, V, upper_bound, lower_bound, image_width)
+rectangularRange_HSV_cpp <- function(H, S, V, upper_bound, lower_bound, image_width, check_V) {
+    .Call(`_duflor_rectangularRange_HSV_cpp`, H, S, V, upper_bound, lower_bound, image_width, check_V)
 }
 

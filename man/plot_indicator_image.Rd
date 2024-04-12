@@ -4,7 +4,7 @@
 \alias{plot_indicator_image}
 \title{Plot indicator-image for a given spectrum}
 \usage{
-plot_indicator_image(indicator.array, spectrum_name)
+plot_indicator_image(indicator.array, spectrum_name = "")
 }
 \arguments{
 \item{indicator.array}{\code{pixel.array} with  modified hsv-values of pixels. See \code{\link[=get_indicator_image]{get_indicator_image()}} for details. Values are expected to be in HSV color-space.}
