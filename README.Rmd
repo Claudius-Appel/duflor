@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check: Dev](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/Claudius-Appel/duflor/graph/badge.svg?token=W9SO1ZPNEZ)](https://codecov.io/gh/Claudius-Appel/duflor)
 <!-- badges: end -->
 
 ## Overview
