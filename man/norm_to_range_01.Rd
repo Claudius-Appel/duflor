@@ -15,4 +15,14 @@ vector, normalised to range \code{0-1}
 \description{
 normalise a vector to range \code{0-1}
 }
+\examples{
+x <- runif(n = 50, min = 1, max = 10)
+max(duflor:::norm_to_range_01(x))
+min(duflor:::norm_to_range_01(x))
+
+
+}
+\seealso{
+\code{\link[=limit_to_range]{limit_to_range()}}
+}
 \keyword{internal}

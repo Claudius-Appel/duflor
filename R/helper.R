@@ -7,6 +7,14 @@
 #' @return vector, normalised to range `0-1`
 #' @keywords internal
 #'
+#' @seealso [limit_to_range()]
+#'
+#' @examples
+#' x <- runif(n = 50, min = 1, max = 10)
+#' max(duflor:::norm_to_range_01(x))
+#' min(duflor:::norm_to_range_01(x))
+#'
+#'
 norm_to_range_01 <- function(x){(x-min(x))/(max(x)-min(x))}
 
 #' compare two lists and return all keys that are not present in both.
