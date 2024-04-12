@@ -7,7 +7,7 @@
 
 [![R-CMD-check:
 Dev](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml/badge.svg?branch=dev)](https://github.com/Claudius-Appel/duflor/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/Claudius-Appel/duflor/graph/badge.svg?token=W9SO1ZPNEZ)](https://codecov.io/gh/Claudius-Appel/duflor)
+[![codecov](https://codecov.io/gh/Claudius-Appel/duflor/branch/master/graph/badge.svg)](https://app.codecov.io/gh/Claudius-Appel/duflor?branch=master)
 <!-- badges: end -->
 
 ## Overview
