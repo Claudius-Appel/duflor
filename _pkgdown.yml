@@ -10,6 +10,7 @@ reference:
       - '`extract_pixels_HSV`'
       - '`rectangularRange_HSV`'
       - '`rectangularRange_HSV_cpp`'
+      - '`rectangularRange_HSV_iteronce_cpp`'
   - title: Conversion & Modification
     desc: modification or conversion of objects
     contents:
