@@ -14,7 +14,7 @@ reference:
   - title: Conversion & Modification
     desc: modification or conversion of objects
     contents:
-      - '`change_pixel_color_HSV`'
+      - '`apply_HSV_color_by_mask`'
       - '`RGBtoHSV`'
       - '`sRGBtoRGB`'
       - '`HSVtoRGB`'

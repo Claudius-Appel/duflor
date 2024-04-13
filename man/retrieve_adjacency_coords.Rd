@@ -25,7 +25,7 @@ coords <- retrieve_adjacency_coords(adjacency,1) # retrieve coordinates of first
 
 plot_array_as_image_sRGB( # display result
     HSVtoRGB(
-        change_pixel_color_HSV(
+        apply_HSV_color_by_mask(
             pixel.array,
             coords,
             target.color = "white",
