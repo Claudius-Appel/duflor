@@ -22,6 +22,7 @@
 plot_array_as_image_sRGB <- function(rgb.array, main = "title") {
     # plot rgb data as raster
     # HSV>sRGB-data
+    # coerce to array to remove the 'depth'-dimension of the cImg
     rgb.array <- rgb.array[1:dim(rgb.array)[1], 1:dim(rgb.array)[2], , 1:3]
     rgb.array <- aperm(rgb.array, c(2, 1, 3))
     rgb.array[, , 1] <- norm_to_range_01(rgb.array[, , 1])
