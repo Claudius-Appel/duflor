@@ -18,4 +18,8 @@ test_that("non-numeric inputs error", {
     expect_error(limit_to_range(x = vector,replace_lower = 255,replace_upper = c("1","A",NULL)))
     expect_error(limit_to_range(x = vector,replace_lower = 255,replace_upper = c(NULL)))
     expect_error(limit_to_range(x = vector,replace_lower = 255,replace_upper = c(NA)))
+    expect_error(limit_to_range(x = c("1","A",NULL),replace_lower = 255,replace_upper = c("1","A",NULL)))
+    expect_error(limit_to_range(x = c(NULL),replace_lower = 255,replace_upper = c(NULL)))
+    expect_error(limit_to_range(x = c(NA),replace_lower = 255,replace_upper = c(NA)))
 })
+
