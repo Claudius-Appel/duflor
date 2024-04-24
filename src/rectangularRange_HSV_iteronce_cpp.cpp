@@ -63,17 +63,15 @@ List rectangularRange_HSV_iteronce_cpp(NumericVector H,
     List results;
     NumericMatrix upper_bound_;
     NumericMatrix lower_bound_;
+    // Get the number of rows and columns if upper_bound is not null
+    int num_rows = 0;
+
     if (upper_bound.isNotNull()) {
         upper_bound_ = static_cast<NumericMatrix>(upper_bound);
+        num_rows = upper_bound_.rows();
     }
     if (lower_bound.isNotNull()) {
         lower_bound_ = static_cast<NumericMatrix>(lower_bound);
-    }
-    // Get the number of rows and columns if upper_bound is not null
-    int num_rows = 0;
-    // int num_cols = 0;
-    if (upper_bound.isNotNull()) {
-        num_rows = upper_bound_.rows();
     }
 
     // Rcout << "upper.bound.cols(): " << upper_bound_.cols() << "\n";
@@ -145,10 +143,8 @@ List rectangularRange_HSV_iteronce_cpp(NumericVector H,
         colnames(idx) = CharacterVector::create("x", "y");
 
         // compute img.fraction
-        int hs = H.size();
-        double fraction = static_cast<double>(n) / (int)hs;
+        double fraction = static_cast<double>(n) / (int)repetitions;
         // Rcout << "The value of H.size : " << H.size() << "\n";
-        // Rcout << "The value of Hs : " << hs << "\n";
         // Rcout << "The value of n : " << n << "\n";
         // Rcout << "The value of fraction : " << fraction << "\n";
 
