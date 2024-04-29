@@ -1,0 +1,114 @@
+---
+title: "optimising_for_speed"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{optimising_for_speed}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(duflor)
+```
+
+# Introduction
+
+Image-Analysis is a resource-consuming process. 
+To give some context, this package was built and designed for the analysis of up to 200 images with a resolution of 6000x4000=24.000.000 pixels. As each pixel is represented in HSV-color space, each image consists of a multidimensional matrix with 72.000.000 elements. As a result, each full image consumes `576` MB of RAM.  
+The likely effectiveness of any measure outlined on this article thus heavily depends on your preexisting specs and workflow-requirements.
+
+This problem gets accentuated by various factors:
+
+1. General
+    1. number of images
+    2. image dimensions
+    3. Programming Language used for iteration-heavy steps
+    4. Number of spectra extracted per image
+2. User-specific
+    1. Specifications of the machine running the analysis-process
+    2. Parallelised computing
+
+Not all of these factors can be addressed by the package author<!--, and some of these can only be addressed after careful benchmarking-->.
+
+Within the scope of this page, `resources` is a general term for any one of the following:
+
+- RAM (both available and total)
+- CPU Clock speed
+- Storage speed
+
+Finally, most of the aspects listed in this article are merely listed for the sake of completeness, as they are _very_ generalized and should not be "new" to the reader.
+
+# 1. General
+
+Steps and advice outlined in this section are considered to hold true regardless of the PC's specifications.
+
+## 1.1 Number of images
+
+It is pretty self-explanatory that the analysis of 400 images will require considerably more resources than the analysis of fewer images. 
+
+## 1.2 Image dimensions
+
+It should come as no surprise that smaller images will be processed faster, because less pixels must be checked against any set of color boundaries.  
+As a nice bonus, smaller images also have fewer pixels which can be considered a potential success, and thus the resulting data-objects _can_ be smaller^[Of course, this is only partially true for well-defined image subsets of an image, as this _should_ return the same number of relevant hits as the large image, while reducing the chance of adding false-positives.].
+
+
+## 1.3 Programming Language used for iteration-heavy steps
+
+First things first - R is completely fine for a lot of tasks. And rewriting stuff in C++ can help, but may not always help. 
+In general, a re-implementation in C++ is only useful if the code you re-write needs a stupid amount of iterations, or invokes recursion.
+Within the scope of this package, the process of determining for every pixel if it is part of either one range or another can be utterly slow when implemented in raw R-code. As a central and important step, quantifying matches for several HSV-ranges (e.g. 'drought'-pixels,'green' pixels, 'identifier'-pixels, ...) further increases the time-cost. On the authors laptop (mobile Ryzen 5500U with 16GB total RAM), the mean execution time of 32 sequential analyses of the same image (dimensions 6000x4000 pixels) took
+
+- R: ~4.02279 [s/iteration]
+- cpp: ~2.01527 [s/iteration]
+- cpp_optimised: ~0.594039 [s/iteration]
+
+respectively. 
+Needless to say, extrapolating this over 200 images will snowball appropriately.
+It could be argued that the slower implementation(s) should not be part of the package at all; however they serve as an important stepping-stone for understanding the more optimised cpp-implementation(s).
+
+Loading is done in Cpp via the [`cImg`](https://cimg.eu/)-library via the R-package [`Imager`](https://github.com/asgr/imager).
+To quantify the green leaf-area or root-area in an image, every pixel in the image must be checked, This can and will take time, especially on high-resolution images. To counterbalance this, this step is implemented in C++ via the [`Rcpp`](https://www.rcpp.org/)-package, since iterating over large matrices and checking each value against a condition is _substantially_ faster in C++ than in R.
+
+## 1.4 Number of spectra extracted per image
+
+Similarly to [1.1](#1.1-number-of-images), the number of spectra which have to be extracted for each image increases execution-time.
+In principal, the factor would be relative to the number of spectra; however benchmarks on my end don't support this trend. However, as I don't have the hardware required to run benchmarks at full efficiency, I cannot verify if this assumption actually holds.
+
+# 2. User-specific changes
+
+## 2.1 Specifications of the machine running the analysis-process
+
+This section gives a brief overview on which parts of a computer running this package for analysis tends to get stressed the most, and is intended as a _very simple_ baseline.
+
++ RAM (a lot of number-crunching)
++ CPU (a lot of number-crunching)
+
+- GPU
+
+A proper CPU is important, and so is a decent amount of RAM.
+It should be noted that a parallelised evaluation requires **significantly** more RAM., _especially_ if the code is run in parallel. 
+See [2.2 Parallelised computing] for more details.
+
+
+## 2.2 Paralellised computing
+
+Parallelisation is a simple™ solution to computations which take a lot of time. Simple in principal, somewhat complicated in detail. However, the in-depth fine details of how and why parallelisation works are beyond the scope of this article (and to an extend, its author).
+
+While the RAM-requirements are proportional to the dimensions of the analysed images, the required RAM-space increases significantly under parallelisation. When you parallelise the analysis-process, you essentially exchange RAM-usage for computational speed.
+Depending on the OS running the code, the hunger for RAM is higher, because different OS's have different computational backends available.
+
+A so-called `socket`-backend can be run on Windows, MacOS and Linux.  
+It works by separately exporting the required environment (variables, functions, hidden objects, loaded packages, etc.) from the master-process to every designated worker, which work secluded from each other. When a worker finishes its workload, it must signal back to the master-process that it has finished. Once all workers are done, their results can be collected by the master, combined into a collective output format, and used as a "normal" variable from there. The major disadvantage is the significant overhead accumulating by this back-and-forth, and thus a `socket`-cluster is **slow** (compared to the `fork`-backend described below). For the reasons described above, a `socket`-backend also heavily increases RAM-usage (linearly with the number of workers).
+
+On the other hand, the `fork`-backend runs significantly faster. Instead of duplicating all data and providing a unique copy to each worker-process, each worker gains access to the master's environment. As a consequence, the significant overhead of duplicating the environment can be ignored, and workers instead just return their respective results to the master process. Unfortunately, **this backend is not available on windows**. As an additional side note, machine-clusters cannot use `fork`-backends.
+
+A final warning: A backend with too many workers compared to the amount of available RAM can and will starve the PC out of RAM. Without free RAM, no other processes will be able to run, thus halting essentially all other currently running processes. In certain cases, it can also crash the system. 
+
+For a similar reason, even if the provided amount of RAM is not an issue, one should also not declare a cluster using *all* available cores.

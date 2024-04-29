@@ -7,7 +7,13 @@
     <loc>https://Claudius-Appel.github.io/duflor/articles/duflor.html</loc>
   </url>
   <url>
+    <loc>https://Claudius-Appel.github.io/duflor/articles/general_workflow.html</loc>
+  </url>
+  <url>
     <loc>https://Claudius-Appel.github.io/duflor/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://Claudius-Appel.github.io/duflor/articles/optimising_for_speed.html</loc>
   </url>
   <url>
     <loc>https://Claudius-Appel.github.io/duflor/authors.html</loc>
@@ -25,10 +31,7 @@
     <loc>https://Claudius-Appel.github.io/duflor/reference/adjacency.html</loc>
   </url>
   <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/apply_hsv_color_to_image_subset.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/change_pixel_color_HSV.html</loc>
+    <loc>https://Claudius-Appel.github.io/duflor/reference/apply_HSV_color_by_mask.html</loc>
   </url>
   <url>
     <loc>https://Claudius-Appel.github.io/duflor/reference/convert_pixels_to_area.html</loc>
@@ -65,6 +68,9 @@
   </url>
   <url>
     <loc>https://Claudius-Appel.github.io/duflor/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://Claudius-Appel.github.io/duflor/reference/limit_to_range.html</loc>
   </url>
   <url>
     <loc>https://Claudius-Appel.github.io/duflor/reference/load_image.html</loc>
