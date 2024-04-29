@@ -1,0 +1,29 @@
+---
+title: "general_workflow"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{general_workflow}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(duflor)
+```
+
+To quantify areas in an image, a general workflow can be accomplished by a different (set of) functions:
+
+1. Load the image as a `cImg`-array. (`load_image()`)
+2. Define the HSV-spectrums to quantify. (You may either define them yourself, or modify default-spectrums loaded by `spectrums <- getOption("duflor.default_hsv_spectrums")`)
+3. Quantify pixels whose HSV-values fall within each spectrum defined above. (`extract_pixels_HSV()`/[`rectangularRange_HSV_iteronce_cpp()`,`rectangularRange_HSV_cpp()`,`rectangularRange_HSV()`]^[While one can certainly use the 'rectangularRange_*'-functions themselves, it is recommended to use the wrapper 'extract_pixels_HSV' to ensure input values are properly pre-processed])
+4. Convert the number of pixels into an area based on a known calibration-area (`convert_pixels_to_area()`)
+
+
+The alternative (and suggested) solution is to use the shiny front-end to the workflow provided above via the package [`duflor.gui`](https://github.com/Claudius-Appel/duflor.gui).
