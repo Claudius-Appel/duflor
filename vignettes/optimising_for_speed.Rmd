@@ -97,18 +97,8 @@ It should be noted that a parallelised evaluation requires **significantly** mor
 See [2.2 Parallelised computing] for more details.
 
 
-## 2.2 Paralellised computing
+## 2.2 Parallelised computing
 
-Parallelisation is a simple™ solution to computations which take a lot of time. Simple in principal, somewhat complicated in detail. However, the in-depth fine details of how and why parallelisation works are beyond the scope of this article (and to an extend, its author).
+Parallelisation is a ~~simple~~ solution to computations which take a lot of time. Simple in principal, somewhat complicated in detail. However, the in-depth fine details of how and why parallelisation works are beyond the scope of this article (and to an extend, its author).
 
-While the RAM-requirements are proportional to the dimensions of the analysed images, the required RAM-space increases significantly under parallelisation. When you parallelise the analysis-process, you essentially exchange RAM-usage for computational speed.
-Depending on the OS running the code, the hunger for RAM is higher, because different OS's have different computational backends available.
-
-A so-called `socket`-backend can be run on Windows, MacOS and Linux.  
-It works by separately exporting the required environment (variables, functions, hidden objects, loaded packages, etc.) from the master-process to every designated worker, which work secluded from each other. When a worker finishes its workload, it must signal back to the master-process that it has finished. Once all workers are done, their results can be collected by the master, combined into a collective output format, and used as a "normal" variable from there. The major disadvantage is the significant overhead accumulating by this back-and-forth, and thus a `socket`-cluster is **slow** (compared to the `fork`-backend described below). For the reasons described above, a `socket`-backend also heavily increases RAM-usage (linearly with the number of workers).
-
-On the other hand, the `fork`-backend runs significantly faster. Instead of duplicating all data and providing a unique copy to each worker-process, each worker gains access to the master's environment. As a consequence, the significant overhead of duplicating the environment can be ignored, and workers instead just return their respective results to the master process. Unfortunately, **this backend is not available on windows**. As an additional side note, machine-clusters cannot use `fork`-backends.
-
-A final warning: A backend with too many workers compared to the amount of available RAM can and will starve the PC out of RAM. Without free RAM, no other processes will be able to run, thus halting essentially all other currently running processes. In certain cases, it can also crash the system. 
-
-For a similar reason, even if the provided amount of RAM is not an issue, one should also not declare a cluster using *all* available cores.
+This package itself does not implement any parallel back-end. The app declared in the {duflor.gui}-package is capable of parallel execution. Refer to its documentation for further information.
