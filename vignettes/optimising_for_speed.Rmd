@@ -101,4 +101,4 @@ See [2.2 Parallelised computing] for more details.
 
 Parallelisation is a ~~simple~~ solution to computations which take a lot of time. Simple in principal, somewhat complicated in detail. However, the in-depth fine details of how and why parallelisation works are beyond the scope of this article (and to an extend, its author).
 
-This package itself does not implement any parallel back-end. The app declared in the {duflor.gui}-package is capable of parallel execution. Refer to its documentation for further information.
+This package itself does not implement any parallel back-end. The app declared in the `{duflor.gui}`-package is capable of parallel execution. Refer to its documentation for further information.
