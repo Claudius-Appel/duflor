@@ -219,53 +219,19 @@ intended as a <em>very simple</em> baseline.</p>
 <p>A proper CPU is important, and so is a decent amount of RAM. It
 should be noted that a parallelised evaluation requires
 <strong>significantly</strong> more RAM., <em>especially</em> if the
-code is run in parallel. See [2.2 Parallelised computing] for more
-details.</p>
+code is run in parallel. See <a href="#parallelised-computing">2.2
+Parallelised computing</a> for more details.</p>
 </div>
 <div class="section level3">
-<h3 id="paralellised-computing">2.2 Paralellised computing<a class="anchor" aria-label="anchor" href="#paralellised-computing"></a>
+<h3 id="parallelised-computing">2.2 Parallelised computing<a class="anchor" aria-label="anchor" href="#parallelised-computing"></a>
 </h3>
-<p>Parallelisation is a simple™ solution to computations which take a
-lot of time. Simple in principal, somewhat complicated in detail.
+<p>Parallelisation is a <del>simple</del> solution to computations which
+take a lot of time. Simple in principal, somewhat complicated in detail.
 However, the in-depth fine details of how and why parallelisation works
 are beyond the scope of this article (and to an extend, its author).</p>
-<p>While the RAM-requirements are proportional to the dimensions of the
-analysed images, the required RAM-space increases significantly under
-parallelisation. When you parallelise the analysis-process, you
-essentially exchange RAM-usage for computational speed. Depending on the
-OS running the code, the hunger for RAM is higher, because different
-OS’s have different computational backends available.</p>
-<p>A so-called <code>socket</code>-backend can be run on Windows, MacOS
-and Linux.<br>
-It works by separately exporting the required environment (variables,
-functions, hidden objects, loaded packages, etc.) from the
-master-process to every designated worker, which work secluded from each
-other. When a worker finishes its workload, it must signal back to the
-master-process that it has finished. Once all workers are done, their
-results can be collected by the master, combined into a collective
-output format, and used as a “normal” variable from there. The major
-disadvantage is the significant overhead accumulating by this
-back-and-forth, and thus a <code>socket</code>-cluster is
-<strong>slow</strong> (compared to the <code>fork</code>-backend
-described below). For the reasons described above, a
-<code>socket</code>-backend also heavily increases RAM-usage (linearly
-with the number of workers).</p>
-<p>On the other hand, the <code>fork</code>-backend runs significantly
-faster. Instead of duplicating all data and providing a unique copy to
-each worker-process, each worker gains access to the master’s
-environment. As a consequence, the significant overhead of duplicating
-the environment can be ignored, and workers instead just return their
-respective results to the master process. Unfortunately, <strong>this
-backend is not available on windows</strong>. As an additional side
-note, machine-clusters cannot use <code>fork</code>-backends.</p>
-<p>A final warning: A backend with too many workers compared to the
-amount of available RAM can and will starve the PC out of RAM. Without
-free RAM, no other processes will be able to run, thus halting
-essentially all other currently running processes. In certain cases, it
-can also crash the system.</p>
-<p>For a similar reason, even if the provided amount of RAM is not an
-issue, one should also not declare a cluster using <em>all</em>
-available cores.</p>
+<p>This package itself does not implement any parallel back-end. The app
+declared in the {duflor.gui}-package is capable of parallel execution.
+Refer to its documentation for further information.</p>
 </div>
 </div>
 
