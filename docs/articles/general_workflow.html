@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9026</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9027</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,21 +90,21 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://Claudius-Appel.github.io/duflor/">duflor</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Attaching duflor version 0.0.1.9026 from library C:/Users/Claudius Main/AppData/Local/R/cache/R/renv/library/duflor-c6543f5b/R-4.3/x86_64-w64-mingw32.</span></span></code></pre></div>
+<span><span class="co">#&gt; Attaching duflor version 0.0.1.9027 from library C:/Users/Claudius Main/AppData/Local/R/cache/R/renv/library/duflor-c6543f5b/R-4.3/x86_64-w64-mingw32.</span></span></code></pre></div>
 <p>To quantify areas in an image, a general workflow can be accomplished
 by a different (set of) functions:</p>
 <ol style="list-style-type: decimal">
 <li>Load the image as a <code>cImg</code>-array.
 (<code><a href="../reference/load_image.html">load_image()</a></code>)</li>
-<li>Define the HSV-spectrums to quantify. (You may either define them
-yourself, or modify default-spectrums loaded by
+<li>Define the HSV-spectra to quantify. (You may either define them
+yourself, or modify default-spectra loaded by
 <code>spectrums &lt;- getOption("duflor.default_hsv_spectrums")</code>)</li>
 <li>Quantify pixels whose HSV-values fall within each spectrum defined
 above.
-(<code><a href="../reference/extract_pixels_HSV.html">extract_pixels_HSV()</a></code>/[<code><a href="../reference/rectangularRange_HSV_iteronce_cpp.html">rectangularRange_HSV_iteronce_cpp()</a></code>,<code><a href="../reference/rectangularRange_HSV_cpp.html">rectangularRange_HSV_cpp()</a></code>,<code><a href="../reference/rectangularRange_HSV.html">rectangularRange_HSV()</a></code>]<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;While one can certainly use the
-’rectangularRange_*‘-functions themselves, it is recommended to use the
-wrapper ’extract_pixels_HSV’ to ensure input values are properly
-pre-processed&lt;/p&gt;"><sup>1</sup></a>)</li>
+(<code><a href="../reference/extract_pixels_HSV.html">extract_pixels_HSV()</a></code>/[<code><a href="../reference/rectangularRange_HSV_iteronce_cpp.html">rectangularRange_HSV_iteronce_cpp()</a></code>,<code><a href="../reference/rectangularRange_HSV_cpp.html">rectangularRange_HSV_cpp()</a></code>,<code><a href="../reference/rectangularRange_HSV.html">rectangularRange_HSV()</a></code>]<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;While one can certainly use the
+&lt;code&gt;rectangularRange_*()&lt;/code&gt;-functions themselves, it is
+recommended to use the wrapper &lt;code&gt;&lt;a href="../reference/extract_pixels_HSV.html"&gt;extract_pixels_HSV()&lt;/a&gt;&lt;/code&gt; to
+ensure input values are properly pre-processed&lt;/p&gt;'><sup>1</sup></a>)</li>
 <li>Convert the number of pixels into an area based on a known
 calibration-area (<code><a href="../reference/convert_pixels_to_area.html">convert_pixels_to_area()</a></code>)</li>
 </ol>
