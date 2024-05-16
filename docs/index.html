@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="index.html">duflor</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9026</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9027</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,6 +82,7 @@
 </div>
 <!-- badges: start -->
 
+<!-- badges: end -->
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
@@ -103,12 +104,25 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"https://github.com/Claudius-Appel/duflor@dev"</span></span>
 <span>  ,build_vignettes <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 <p>Vignettes are rendered documents discussing specific topics within a package. Installing them is recommended, but not required for utilising the package itself.</p>
+<p><strong>If the front-end shiny-application within the <code>duflor_gui</code>-package is to be used, it is strongly recommended to follow the installation-guide for that package instead.</strong></p>
 <div class="section level3">
 <h3 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h3>
 <p>Installing this package from GitHub requires the installation of the R-package <code>devtools</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="install-r-build-toolchain">Install R-build-toolchain<a class="anchor" aria-label="anchor" href="#install-r-build-toolchain"></a>
+</h4>
+<p>This package contains C++ code. As it is distributed as source-code, users will require the appropriate R-build-toolchain for their respective operating system. For further information and setup-instructions, refer to “<a href="https://r-pkgs.org/setup.html#setup-tools" class="external-link uri">https://r-pkgs.org/setup.html#setup-tools</a>”.</p>
+<p>For windows, the R-package <code>installr</code> may be used to check if Rtools is already installed, and whether or not it has been found by R. Additionally, it will notify the user if a new R-update is available (major and minor versions only, ignores patch versions):</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"installr"</span><span class="op">)</span> <span class="co"># once pkgbuild is installed, run: </span></span>
+<span><span class="fu">installr</span><span class="fu">::</span><span class="fu"><a href="https://talgalili.github.io/installr/reference/install.Rtools.html" class="external-link">install.Rtools</a></span><span class="op">(</span>check <span class="op">=</span> <span class="cn">T</span>,check_r_update <span class="op">=</span> <span class="cn">T</span>,GUI <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="section"></h3>
 </div>
 </div>
 <div class="section level2">
@@ -121,7 +135,8 @@
 </h3>
 <p>Upon loading, duflor will set the following options via <code>options(XX)</code>:</p>
 <ul>
-<li>duflor.default_hsv_spectrums: default HSV-ranges for
+<li>
+<code>duflor.default_hsv_spectrums</code>: default HSV-ranges for
 <ul>
 <li>drought leaf-area</li>
 <li>green leaf-area</li>
@@ -129,19 +144,18 @@
 <li>identifier area</li>
 </ul>
 </li>
-<li>duflor.default_identifier_area: the size of the <code>identifier_dot</code> in [cm^2].</li>
+<li>
+<code>duflor.default_identifier_area</code>: the size of the <code>identifier_dot</code> in [cm^2].</li>
 </ul>
-<p>Their values can be retrieved via <code>getOption(option)</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>Their values can be retrieved via <code>getOption(option)</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"duflor.default_hsv_spectrums"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"duflor.default_identifier_area"</span><span class="op">)</span></span></code></pre></div>
-<p><code>duflor.default_hsv_spectrums</code> is merely used as a shortcut to load the currently-set default hsv ranges. It is not intended to be modified; as it serves no internal use. <code>duflor.default_identifier_area</code> is more likely to require modification. Before calculating the area for each spectrum via <code>duflor::pixels_to_area(pixel.counts)</code>, the true area of the identifier-dot must be set via this option. The default is set to 0.503. All areas are assumed to be in [cm^2].</p>
+<ul>
+<li><p><code>duflor.default_hsv_spectrums</code> is merely used as a shortcut to load the currently-set default hsv ranges. It is not intended to be modified; as it serves no internal use.</p></li>
+<li><p><code>duflor.default_identifier_area</code> is more likely to require modification. Before calculating the area for each spectrum via <code>duflor::pixels_to_area(pixel.counts)</code>, the true area of the identifier-dot must be set via this option. The default is set to 0.503. All areas are assumed to be in [cm^2].</p></li>
+</ul>
 </div>
-</div>
-<div class="section level2">
-<h2 id="further-documentation">Further Documentation<a class="anchor" aria-label="anchor" href="#further-documentation"></a>
-</h2>
-<p>TODO</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
