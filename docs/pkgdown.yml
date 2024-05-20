@@ -1,11 +1,11 @@
 pandoc: 3.1.11
-pkgdown: 2.0.8
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   duflor: duflor.html
   general_workflow: general_workflow.html
   optimising_for_speed: optimising_for_speed.html
-last_built: 2024-05-16T09:55Z
+last_built: 2024-05-20T10:04Z
 urls:
   reference: https://Claudius-Appel.github.io/duflor/reference
   article: https://Claudius-Appel.github.io/duflor/articles
