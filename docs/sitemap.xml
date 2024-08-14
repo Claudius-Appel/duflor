@@ -1,120 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/404.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/articles/duflor.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/articles/general_workflow.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/articles/optimising_for_speed.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/index.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/adjacency.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/apply_HSV_color_by_mask.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/convert_pixels_to_area.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/diagonal_adjacency.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/dot-main_args.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/dot-onAttach.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/dot-onLoad.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/dot-onUnLoad.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/duflor-package.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/extract_pixels_HSV.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/get_indicator_image.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/get_unique_list_elements.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/HSVtoRGB.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/limit_to_range.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/load_image.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/norm_to_range_01.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/objs.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/plot_array_as_image_sRGB.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/plot_indicator_image.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/reassign_integers_by_frequency.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV_cpp.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV_iteronce_cpp.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/remove_key_from_list.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/retrieve_adjacency_coords.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/RGBtoHSV.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/RGBtosRGB.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/sRGBtoRGB.html</loc>
-  </url>
-  <url>
-    <loc>https://Claudius-Appel.github.io/duflor/reference/validate_mask_edges.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://Claudius-Appel.github.io/duflor/404.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/articles/duflor.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/articles/general_workflow.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/articles/index.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/articles/optimising_for_speed.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/authors.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/index.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/LICENSE-text.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/LICENSE.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/adjacency.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/apply_HSV_color_by_mask.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/convert_pixels_to_area.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/diagonal_adjacency.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/dot-main_args.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/dot-onAttach.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/dot-onLoad.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/dot-onUnLoad.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/duflor-package.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/extract_pixels_HSV.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/get_indicator_image.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/get_unique_list_elements.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/HSVtoRGB.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/index.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/limit_to_range.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/load_image.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/norm_to_range_01.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/objs.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/plot_array_as_image_sRGB.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/plot_indicator_image.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/reassign_integers_by_frequency.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV_cpp.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/rectangularRange_HSV_iteronce_cpp.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/remove_key_from_list.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/retrieve_adjacency_coords.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/RGBtoHSV.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/RGBtosRGB.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/sRGBtoRGB.html</loc></url>
+<url><loc>https://Claudius-Appel.github.io/duflor/reference/validate_mask_edges.html</loc></url>
 </urlset>
+

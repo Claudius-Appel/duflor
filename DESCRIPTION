@@ -1,6 +1,6 @@
 Package: duflor
 Title: Plant Image Analysis For Determination of Leaf- and Root-Area 
-Version: 1.0.0
+Version: 1.0.1
 Author: Claudius Appel
 Authors@R: c(
     person("Claudius", "Appel", email =   "claudius.appel@freenet.de" , role = c("aut", "cre"))
@@ -12,7 +12,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
